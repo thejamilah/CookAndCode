@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Models\ManagerViewModels\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
