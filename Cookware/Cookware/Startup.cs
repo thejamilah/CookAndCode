@@ -44,6 +44,7 @@ namespace Cookware
             }
 
             app.UseStaticFiles();
+            app.UseAuthentication();
             app.UseMvcWithDefaultRoute();
             
         }
