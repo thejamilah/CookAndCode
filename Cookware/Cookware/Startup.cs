@@ -30,6 +30,13 @@ namespace Cookware
         {
             services.AddMvc();
 
+            services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                options.Password.RequiredLength = 5;
+                options.Password.RequireLowercase = true;
+
+            });
+
             services.AddDbContext<CookwareDBContext>(options =>
                 options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"])
             );

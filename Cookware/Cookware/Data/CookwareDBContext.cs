@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cookware.Data
 {
-    public class CookwareDBContext : DbContext
+    public class CookwareDBContext
     {
         public CookwareDBContext(DbContextOptions<CookwareDBContext> options) : base(options)
         {
