@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Cookware.Models.Interfaces
 {
-    public interface IProduct
+    public interface IProducts
     {
         //Create
         //Task CreateProduct(Product product);
