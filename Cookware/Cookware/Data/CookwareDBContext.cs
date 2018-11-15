@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Cookware.Data
 {
-    public class CookwareDBContext
+    public class CookwareDBContext : DbContext
     {
         public CookwareDBContext(DbContextOptions<CookwareDBContext> options) : base(options)
         {
 
         }
+
     }
 }
