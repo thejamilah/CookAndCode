@@ -8,17 +8,17 @@ namespace Cookware.Models.Interfaces
     public interface IProducts
     {
         //Create
-        //Task CreateProduct(Product product);
+        Task CreateProduct(Product product);
 
         //Read
-        //Task<IEnumerable<Product>> GetProducts();
+        Task<IEnumerable<Product>> GetProducts();
 
-        //Task<Product> GetProduct(int? id);
+        Task<Product> GetProduct(int? id);
 
         //Update
-        //Task UpdateProduct(Product product);
+        Task UpdateProduct(Product product);
 
         //Delete
-        //Task DeleteProduct(int id);
+        Task DeleteProduct(int id);
     }
 }

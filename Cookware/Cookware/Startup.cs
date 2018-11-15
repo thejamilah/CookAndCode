@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Cookware.Data;
+using Cookware.Models.Interfaces;
+using Cookware.Models.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -33,6 +35,8 @@ namespace Cookware
             services.AddDbContext<CookwareDBContext>(options =>
                 options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"])
             );
+
+            services.AddTransient<IProducts, ProductService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
