@@ -1,4 +1,13 @@
-﻿<html>
+﻿@using Microsoft.AspNetCore.Identity
+@using Cookware.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{ 
+    ViewData["Title"] = "Index";
+}
+
+<html>
 <head>
 
 </head>
@@ -6,6 +15,16 @@
 
     <h1>COOK && CODE</h1>
 
+
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <p>Welcome to COOK && CODE @User.Claims.First(name => name.Type == "FullName").Value</p>
+    }
+
+    else
+    {
+        <a asp-action="Logout" asp-controller="Account">LOGOUT</a>
+    }
 
 </body>
 </html>
