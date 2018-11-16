@@ -72,6 +72,12 @@ namespace Cookware.Controllers
             return View(registervm);
         }
 
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel loginvm)
         {
