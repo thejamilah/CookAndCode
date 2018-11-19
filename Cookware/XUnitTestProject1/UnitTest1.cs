@@ -41,41 +41,5 @@ namespace XUnitTestProject1
             //Assert
             Assert.Equal("Chocolate Printer", product.Name);
         }
-
-        /// <summary>
-        /// Test to get a user object
-        /// </summary>
-        [Fact]
-        public void CanGetUser()
-        {
-            //Arrange
-            ApplicationUser newUser = new ApplicationUser();
-            newUser.FirstName = "Katinka";
-
-            //Assert
-            Assert.Equal("Katinka", newUser.FirstName);
-        }
-
-        /// <summary>
-        /// Test to set a user object
-        /// </summary>
-        [Fact]
-        public void CanSetUser()
-        {
-            //Arrange
-            ApplicationUser newUser = new ApplicationUser()
-            {
-                FirstName = "Katinka",
-                LastName = "Jovavich",
-                Birthday = DateTime.Now,
-                Language = "C#"
-            };
-
-            //Act
-            newUser.LastName = "Strovanavich";
-
-            //Assert
-            Assert.Equal("Strovanavich", newUser.LastName);
-        }
     }
 }
