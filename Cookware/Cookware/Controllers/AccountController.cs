@@ -42,10 +42,23 @@ namespace Cookware.Controllers
                 };
 
                 var result = await _userManager.CreateAsync(user, registervm.Password);
-
+                
                 if (result.Succeeded)
                 {
+                    Claim fullNameClaim = new Claim("FullName", $"{user.FirstName} {user.LastName}");
+
+                    Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
+
+                    List<Claim> myclaims = new List<Claim>()
+                    {
+                        fullNameClaim,
+                        emailClaim
+                    };
+
+                    await _userManager.AddClaimsAsync(user, myclaims);
+
                     await _signInManager.SignInAsync(user, isPersistent: false);
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
