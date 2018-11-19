@@ -10,6 +10,7 @@ using System;
 
 namespace Cookware.Controllers
 {
+    [AllowAnonymous]
     public class AccountController : Controller
     {
         private UserManager<ApplicationUser> _userManager;
@@ -37,8 +38,7 @@ namespace Cookware.Controllers
                     UserName = registervm.Email,
                     Email = registervm.Email,
                     FirstName = registervm.FirstName,
-                    LastName = registervm.LastName,
-                    Birthday = registervm.Birthday
+                    LastName = registervm.LastName
                 };
 
                 var result = await _userManager.CreateAsync(user, registervm.Password);
@@ -46,10 +46,18 @@ namespace Cookware.Controllers
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, isPersistent: false);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    foreach (var item in result.Errors)
+                    {
+                        ModelState.AddModelError("", item.Description);
+                    }
                 }
 
             }
-            return View();
+            return View(registervm);
         }
     }
 }
