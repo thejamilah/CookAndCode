@@ -40,10 +40,10 @@ namespace Cookware
                 .AddDefaultTokenProviders();
 
             services.AddDbContext<CookwareDBContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("ProductionDB")));
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("CookwareIdentity")));
+            options.UseSqlServer(Configuration.GetConnectionString("IdentityDB")));
 
             services.AddAuthorization(options =>
             {
