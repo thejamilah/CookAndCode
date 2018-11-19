@@ -13,5 +13,7 @@ namespace Cookware.Models
         public string LastName { get; set; }
 
         public DateTime Birthday { get; set; }
+
+        public string Language { get; set; }
     }
 }

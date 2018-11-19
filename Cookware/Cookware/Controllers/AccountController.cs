@@ -38,7 +38,9 @@ namespace Cookware.Controllers
                     UserName = registervm.Email,
                     Email = registervm.Email,
                     FirstName = registervm.FirstName,
-                    LastName = registervm.LastName
+                    LastName = registervm.LastName,
+                    Birthday = registervm.Birthday,
+                    Language = registervm.Language
                 };
 
                 var result = await _userManager.CreateAsync(user, registervm.Password);
@@ -49,10 +51,18 @@ namespace Cookware.Controllers
 
                     Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
 
+                    Claim birthdayClaim = new Claim(
+                        ClaimTypes.DateOfBirth,
+                        new DateTime(user.Birthday.Year, user.Birthday.Month, user.Birthday.Day).ToString("u"), ClaimValueTypes.DateTime);
+
+                    Claim languageClaim = new Claim("FavoriteLanguage", user.Language);
+
                     List<Claim> myclaims = new List<Claim>()
                     {
                         fullNameClaim,
-                        emailClaim
+                        emailClaim,
+                        birthdayClaim,
+                        languageClaim
                     };
 
                     await _userManager.AddClaimsAsync(user, myclaims);

@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Cookware.Models;
 using Cookware.Models.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cookware.Controllers
-{
+{   
+    [Authorize(Policy ="MustBe18ToPurchase")]
     public class ProductController : Controller
     {
         private readonly IProducts _products;

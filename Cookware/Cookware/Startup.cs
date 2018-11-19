@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Cookware.Models.Handlers;
 
 namespace Cookware
 {
@@ -43,6 +44,12 @@ namespace Cookware
 
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("MustBe18ToPurchase", policy => policy.Requirements.Add(new MinAgeRequirement(18)));
+                //options.AddPolicy("EmailPolicy", policy => policy.Requirements.Add(new RequireEmailRequirement()));
+            });
 
             services.AddTransient<IProducts, ProductService>();
         }
