@@ -1,5 +1,17 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model IEnumerable<Cookware.Models.Product>
+
+@{ 
+    ViewData["Title"] = "Index";
+}
+
+<h2>COOK && CODE SHOP</h2>
+
+<h3><a href="@Url.Action("Index", "Home")">HOME</a></h3>
+
+@foreach (var item in Model)
+{
+    @item.Name
+    @item.Image
+    @item.Price
+    @item.Description
 }
