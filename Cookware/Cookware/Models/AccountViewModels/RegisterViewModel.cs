@@ -26,6 +26,10 @@ namespace Cookware.Models.AccountViewModels
         public DateTime Birthday { get; set; }
 
         [Required]
+        [Display(Name = "Favorite Coding Language")]
+        public string Language { get; set; }
+
+        [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
