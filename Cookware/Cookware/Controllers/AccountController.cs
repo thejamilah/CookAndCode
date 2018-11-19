@@ -10,6 +10,7 @@ using System;
 
 namespace Cookware.Controllers
 {
+    [AllowAnonymous]
     public class AccountController : Controller
     {
         private UserManager<ApplicationUser> _userManager;
@@ -37,8 +38,7 @@ namespace Cookware.Controllers
                     UserName = registervm.Email,
                     Email = registervm.Email,
                     FirstName = registervm.FirstName,
-                    LastName = registervm.LastName,
-                    Birthday = registervm.Birthday
+                    LastName = registervm.LastName
                 };
 
                 var result = await _userManager.CreateAsync(user, registervm.Password);
@@ -46,10 +46,53 @@ namespace Cookware.Controllers
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, isPersistent: false);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    foreach (var item in result.Errors)
+                    {
+                        ModelState.AddModelError("", item.Description);
+                    }
                 }
 
             }
+            return View(registervm);
+        }
+
+        [HttpGet]
+        public IActionResult Login()
+        {
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel lvm)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(lvm.Email, lvm.Password, false, false);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Invlalid Username or Password.");
+                }
+            }
+            return View(lvm);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }
