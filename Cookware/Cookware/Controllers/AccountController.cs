@@ -21,12 +21,22 @@ namespace Cookware.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
+
+        /// <summary>
+        /// Registration page
+        /// </summary>
+        /// <returns>Display/direct to registration</returns>
         [HttpGet]
         public IActionResult Register()
         {
             return View();
         }
 
+        /// <summary>
+        /// Creates user from registration parameters
+        /// </summary>
+        /// <param name="registervm">Register View Model parameters</param>
+        /// <returns>Complted profile</returns>
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel registervm)
         {
@@ -83,12 +93,21 @@ namespace Cookware.Controllers
             return View(registervm);
         }
 
+        /// <summary>
+        /// Displays Login Page
+        /// </summary>
+        /// <returns>Login view</returns>
         [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
 
+        /// <summary>
+        /// Action that accepts user login
+        /// </summary>
+        /// <param name="lvm">User login credentials</param>
+        /// <returns>Confirmed login or invalid username/password</returns>
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel lvm)
         {
@@ -108,6 +127,10 @@ namespace Cookware.Controllers
             return View(lvm);
         }
 
+        /// <summary>
+        /// Logout page
+        /// </summary>
+        /// <returns>Home page</returns>
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> Logout()

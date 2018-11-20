@@ -10,10 +10,14 @@ namespace Cookware.Controllers
     [Authorize(Policy = "FavoriteLanguage")]
     public class CSharpController : Controller
     {
+        /// <summary>
+        /// Displays C# product home view
+        /// </summary>
+        /// <returns>Home view</returns>
         public IActionResult Index()
         {
-            User.Claims.Any(c => c.Type == "FavoriteLanguage" && c.Value == "C#");
-            bool lang = User.Claims.Any(c => c.Type == "FavoriteLanguage" && c.Value == "C#");
+            //User.Claims.Any(c => c.Type == "FavoriteLanguage" && c.Value == "C#");
+            //bool lang = User.Claims.Any(c => c.Type == "FavoriteLanguage" && c.Value == "C#");
             return View();
         }
 
