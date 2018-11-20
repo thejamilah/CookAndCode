@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Cookware.Migrations.ApplicationDb
+namespace Cookware.Migrations
 {
-    public partial class usermodel : Migration
+    public partial class modelbasket : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
