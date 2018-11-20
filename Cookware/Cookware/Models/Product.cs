@@ -23,5 +23,8 @@ namespace Cookware.Models
         [Required]
         public string Image { get; set; }
 
+        //
+        public ICollection<BasketItem> BasketItems { get; set; }
+
     }
 }
