@@ -47,7 +47,7 @@ namespace Cookware
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("MustBe18ToPurchase", policy => policy.Requirements.Add(new MinAgeRequirement(18)));
+                options.AddPolicy("MustBe21ToPurchase", policy => policy.Requirements.Add(new MinAgeRequirement(21)));
                 options.AddPolicy("FavoriteLanguage", policy => policy.RequireClaim("FavoriteLanguage"));
                 //options.AddPolicy("MustLoveCSharp", policy => policy.Requirements.Add(new
                 //    LanguageRequirements("C#")));

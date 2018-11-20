@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cookware.Controllers
 {
-    public class HomeController : Controller
+    [Authorize(Policy = "MustBe21ToPurchase")]
+
+    public class Over21Controller : Controller
     {
         /// <summary>
-        /// Initial landing page of website
+        /// Displays home page of +21 products
         /// </summary>
-        /// <returns>Home view</returns>
+        /// <returns>To home view</returns>
         public IActionResult Index()
         {
             return View();
