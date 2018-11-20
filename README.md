@@ -15,7 +15,7 @@ This is an e-commerce site dedicated to cookware items with quirky code related 
 - Favorite Coding Language: Will grant access to certain items in database.
 
 ## Policies
-- Over 18 to access products: There may be some graphic cookware or code memes. 
+- Over 21 to access 21+ page products: There are alcohol related cookware products.
 - C# as favorite language: C# is special and allows users to see different items.
 
 ## Deployed Site
