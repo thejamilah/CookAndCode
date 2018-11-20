@@ -43,7 +43,7 @@ namespace Cookware
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDbContext<ApplicationDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("IdentityDB")));
+            options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
 
             services.AddAuthorization(options =>
             {

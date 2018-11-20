@@ -18,6 +18,9 @@
             @if (SignInManager.IsSignedIn(User))
             {
                 <p>Welcome, @User.Claims.First(x => x.Type == "FullName").Value</p>
+                <a class="link" href="Product/">Shop</a>
+                <a class="link" href="CSharp/">For CSharp Lovers Only</a>
+                <a class="link" href="Over21/">Over 21</a>
                 <form asp-action="Logout" asp-controller="Account" method="post">
                     <button type="submit">Log Out</button>
                 </form>
@@ -26,6 +29,7 @@
             {
                 <a class="link" href="Account/Login">login</a>
                 <a class="link" href="Account/Register">register</a>
+                <a class="link" href="Product/">Shop</a>
 
             }
         </div>
