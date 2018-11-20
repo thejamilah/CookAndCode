@@ -1,0 +1,62 @@
+﻿* {
+    font-family: 'Bree Serif', serif;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+
+.top, .spacer, .middle{
+    position: relative;
+    width: 100%;
+    opacity: .95;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    opacity: .9;
+}
+
+.top {
+    background-image: url(bg1.jpg);
+    min-height: 100%;
+}
+
+.spacer{
+    min-height: 300px;
+    background-color:whitesmoke;
+}
+
+.middle{
+    background-image: url(bg2.jpg);
+    min-height: 100%;
+}
+.header {
+    text-align: center;
+    color: whitesmoke;
+    font-size: 2em;
+}
+
+.title {
+    margin-bottom: 0;
+    padding-top: 20%;
+}
+
+.logreg {
+    text-align: center;
+}
+
+.link {
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 10px;
+    color: whitesmoke;
+}
+
+.link:hover {
+    color: #67242d
+}

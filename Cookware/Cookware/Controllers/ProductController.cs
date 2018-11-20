@@ -4,11 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Cookware.Models;
 using Cookware.Models.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cookware.Controllers
-{
+{   
+
+    [AllowAnonymous]
     public class ProductController : Controller
     {
         private readonly IProducts _products;
@@ -18,13 +21,20 @@ namespace Cookware.Controllers
             _products = products;
         }
 
-        //Index shows all products
+        /// <summary>
+        /// index shows all products
+        /// </summary>
+        /// <returns>Product Index</returns>
         public async Task<IActionResult> Index()
         {
             return View(await _products.GetProducts());
         }
 
-        //Details for one product
+        /// <summary>
+        /// Details for one product
+        /// </summary>
+        /// <param name="id">Product ID</param>
+        /// <returns>Product Detail</returns>
         public async Task<IActionResult> Details(int? id)
         {
             if(id == null)
@@ -41,13 +51,20 @@ namespace Cookware.Controllers
             return View(product);
         }
 
-        //displays view with form
+        /// <summary>
+        /// displays view with form
+        /// </summary>
+        /// <returns>Created product view</returns>
         public IActionResult Create()
         {
             return View();
         }
 
-        //creates product after form submitted
+        /// <summary>
+        /// creates product after form submitted
+        /// </summary>
+        /// <param name="product">New Product Object</param>
+        /// <returns>Created product view</returns>
         [HttpPost]
         public async Task<IActionResult> Create([Bind("ID, Sku, Name, Price, Description, Image")] Product product)
         {
@@ -59,7 +76,11 @@ namespace Cookware.Controllers
             return View(product);
         }
 
-        //displays view with form to edit product
+        /// <summary>
+        /// displays view with form to edit product
+        /// </summary>
+        /// <param name="id">Gets product by ID to edit</param>
+        /// <returns>Updated product</returns>
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -75,7 +96,12 @@ namespace Cookware.Controllers
             return View(product);
         }
 
-        //actually performs the action to edit
+        /// <summary>
+        /// actually performs the action to edit
+        /// </summary>
+        /// <param name="id">Product ID</param>
+        /// <param name="product">Edited product name</param>
+        /// <returns>Redirect to home</returns>
         [HttpPost]
         public async Task<IActionResult> Edit(int? id, [Bind("ID, Sku, Name, Price, Description, Image")] Product product)
         {
@@ -106,7 +132,11 @@ namespace Cookware.Controllers
             return View(product);
         }
 
-        //displays view with form to delete
+        /// <summary>
+        /// displays view with form to delete
+        /// </summary>
+        /// <param name="id">Product ID</param>
+        /// <returns>Deleted view</returns>
         public async Task<IActionResult> DeleteProduct(int? id)
         {
             if (id == null)
@@ -122,7 +152,11 @@ namespace Cookware.Controllers
             return View(product);
         }
 
-        //actually deletes product from database
+        /// <summary>
+        /// actually deletes product from database
+        /// </summary>
+        /// <param name="id">Product ID</param>
+        /// <returns>Redirect to home</returns>
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteProduct(int id)
         {

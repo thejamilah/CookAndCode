@@ -8,6 +8,10 @@ namespace Cookware.Controllers
 {
     public class HomeController : Controller
     {
+        /// <summary>
+        /// Initial landing page of website
+        /// </summary>
+        /// <returns>Home view</returns>
         public IActionResult Index()
         {
             return View();
