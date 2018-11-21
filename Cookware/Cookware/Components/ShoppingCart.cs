@@ -1,4 +1,6 @@
 ﻿using Cookware.Data;
+using Cookware.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,15 +13,19 @@ namespace Cookware.Components
     public class ShoppingCart : ViewComponent
     {
         private CookwareDBContext _context;
+        private UserManager<ApplicationUser> _userManager;
 
-        public ShoppingCart(CookwareDBContext context)
+        public ShoppingCart(CookwareDBContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var shoppingCart = await _context.BasketItems.ToListAsync();
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            var ID = user.Id;
+            var shoppingCart = await _context.BasketItems.Where(x => x.UserID == ID).ToListAsync();
 
             return View(shoppingCart);
 
