@@ -20,7 +20,7 @@ namespace Cookware.Controllers
         {
             _products = products;
         }
-
+        
         /// <summary>
         /// index shows all products
         /// </summary>
