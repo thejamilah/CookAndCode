@@ -24,11 +24,17 @@ namespace Cookware.Components
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
-            var ID = user.Id;
-            var shoppingCart = await _context.BasketItems.Where(x => x.UserID == ID).ToListAsync();
-
-            return View(shoppingCart);
-
+            if (user != null)
+            {
+                var ID = user.Id;
+                var shoppingCart = await _context.BasketItems.Where(x => x.UserID == ID).ToListAsync();
+                return View(shoppingCart);
+            }
+            else
+            {
+                List<BasketItem> shoppingCart = new List<BasketItem>();
+                return View(shoppingCart);
+            }
         }
     }
 }
