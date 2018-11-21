@@ -1,0 +1,6 @@
+﻿@model List<Cookware.Models.BasketItem>
+
+@foreach (var item in Model)
+{
+    <p>@item.Product.Name : Qty. - @item.Quantity</p>
+}

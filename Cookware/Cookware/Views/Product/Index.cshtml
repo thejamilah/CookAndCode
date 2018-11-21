@@ -1,21 +1,22 @@
 ﻿@model IEnumerable<Cookware.Models.Product>
 
-@{ 
+@{
     ViewData["Title"] = "Index";
 }
 
-@{ 
+@{
     Layout = "_Layout";
 }
 
+@await Component.InvokeAsync("ShoppingCart")
 
 @foreach (var item in Model)
 {
-    <div class="productAll">         
-        <p><img src="@item.Image"/></p>
-        <p>@item.Name</p> 
+    <div class="productAll">
+        <p><img src="@item.Image" /></p>
+        <p>@item.Name</p>
         <p>@item.Price</p>
     </div>
-    
-    
+
+
 }
