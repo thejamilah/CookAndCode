@@ -4,14 +4,18 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>COOK && CODE SHOP</h2>
+@{ 
+    Layout = "_Layout";
+}
 
-<h3><a href="@Url.Action("Index", "Home")">HOME</a></h3>
 
 @foreach (var item in Model)
 {
-    @item.Name
-    @item.Image
-    @item.Price
-    @item.Description
+    <div class="productAll">         
+        <p><img src="@item.Image"/></p>
+        <p>@item.Name</p> 
+        <p>@item.Price</p>
+    </div>
+    
+    
 }
