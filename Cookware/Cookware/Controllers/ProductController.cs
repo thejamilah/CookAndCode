@@ -25,7 +25,7 @@ namespace Cookware.Controllers
             _products = products;
             _basketItem = basketItem;
         }
-
+        
         /// <summary>
         /// index shows all products
         /// </summary>
@@ -40,14 +40,15 @@ namespace Cookware.Controllers
         /// </summary>
         /// <param name="id">Product ID</param>
         /// <returns>Product Detail</returns>
-        public async Task<IActionResult> Details(int? id)
+        [HttpPost]
+        public async Task<IActionResult> Details(int? productID)
         {
-            if(id == null)
+            if(productID == null)
             {
                 return NotFound();
             }
 
-            var product = await _products.GetProduct(id);
+            var product = await _products.GetProduct(productID);
             if(product == null)
             {
                 return NotFound();
