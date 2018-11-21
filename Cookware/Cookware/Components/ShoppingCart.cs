@@ -1,5 +1,6 @@
 ﻿using Cookware.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,9 @@ namespace Cookware.Components
             _context = context;
         }
 
-        public IViewComponentResult InvokeAsync()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
-            var shoppingCart = _context.BasketItems.ToList();
+            var shoppingCart = await _context.BasketItems.ToListAsync();
 
             return View(shoppingCart);
 

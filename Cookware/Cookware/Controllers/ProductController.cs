@@ -193,7 +193,7 @@ namespace Cookware.Controllers
 
             await _basketItem.CreateBasketItem(newItem);
             
-            return View("Index", "Product");
+            return RedirectToAction("Index", "Product");
         }
     }
 }
