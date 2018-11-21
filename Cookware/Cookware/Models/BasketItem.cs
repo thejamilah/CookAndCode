@@ -14,8 +14,7 @@ namespace Cookware.Models
 
         public int Quantity { get; set; }
 
-        [ForeignKey("UserId")]
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        public string UserID { get; set; }
 
         //Nav keys
 

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Cookware.Models;
 using Cookware.Models.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,11 +15,15 @@ namespace Cookware.Controllers
     [AllowAnonymous]
     public class ProductController : Controller
     {
+        private UserManager<ApplicationUser> _userManager;
         private readonly IProducts _products;
+        private readonly IBasketItem _basketItem;
 
-        public ProductController(IProducts products)
+        public ProductController(UserManager<ApplicationUser> userManager, IProducts products, IBasketItem basketItem)
         {
+            _userManager = userManager;
             _products = products;
+            _basketItem = basketItem;
         }
 
         /// <summary>
@@ -168,6 +173,27 @@ namespace Cookware.Controllers
         private bool ProductExists(int id)
         {
             return _products.GetProduct(id) != null;
+        }
+
+        /// <summary>
+        /// adds basket item and relates product to user with quantity
+        /// </summary>
+        /// <param name="ProductID">Id for product being added</param>
+        /// <param name="Quantity">quantity of item selected by user</param>
+        /// <returns>Index view of product controller</returns>
+        [HttpPost, ActionName("AddToCart")]
+        public async Task<IActionResult> CreateBasketItem(int ProductID, int Quantity)
+        {
+            BasketItem newItem = new BasketItem()
+            {
+                ProductID = ProductID,
+                Quantity = Quantity,
+                UserID = _userManager.GetUserId(User)
+            };
+
+            await _basketItem.CreateBasketItem(newItem);
+            
+            return View("Index", "Product");
         }
     }
 }
