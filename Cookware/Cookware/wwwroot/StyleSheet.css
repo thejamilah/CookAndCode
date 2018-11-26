@@ -69,12 +69,13 @@ body {
 .navbar{
     display: inline-block;
     text-decoration: none;
-    width: 75%;
+    width: 74%;
     float: right;
 }
 
 .navhead{
     display: inline-block;
+    margin-left: 2%;
 }
 
 .navitem {
@@ -82,4 +83,29 @@ body {
     display: inline-block;
     width: 20%;
     float: right;
+}
+
+.navlink{
+    text-decoration: none;
+   
+}
+
+a{
+    color: black;
+}
+
+.navbutton {
+    font-family: 'Bree Serif', serif;
+    font-size: 100%;
+    font-weight: bold;
+    line-height: 1.15;
+    margin: 1.5em 0;
+    padding: 0;
+    background-color:#f9f6f2;
+    border: none;
+
+}
+
+.navbutton:hover{
+    cursor: pointer;
 }
