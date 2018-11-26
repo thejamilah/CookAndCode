@@ -176,25 +176,5 @@ namespace Cookware.Controllers
             return _products.GetProduct(id) != null;
         }
 
-        /// <summary>
-        /// adds basket item and relates product to user with quantity
-        /// </summary>
-        /// <param name="ProductID">Id for product being added</param>
-        /// <param name="Quantity">quantity of item selected by user</param>
-        /// <returns>Index view of product controller</returns>
-        [HttpPost, ActionName("AddToCart")]
-        public async Task<IActionResult> CreateBasketItem(int ProductID, int Quantity)
-        {
-            BasketItem newItem = new BasketItem()
-            {
-                ProductID = ProductID,
-                Quantity = Quantity,
-                UserID = _userManager.GetUserId(User)
-            };
-
-            await _basketItem.CreateBasketItem(newItem);
-            
-            return RedirectToAction("Index", "Product");
-        }
     }
 }
