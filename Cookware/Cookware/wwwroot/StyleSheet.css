@@ -60,3 +60,26 @@ body {
 .link:hover {
     color: #67242d
 }
+
+.nav {
+    width: 100%;
+    background-color: #f9f6f2;
+}
+
+.navbar{
+    display: inline-block;
+    text-decoration: none;
+    width: 75%;
+    float: right;
+}
+
+.navhead{
+    display: inline-block;
+}
+
+.navitem {
+    text-decoration: none;
+    display: inline-block;
+    width: 20%;
+    float: right;
+}

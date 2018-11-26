@@ -1,4 +1,7 @@
-﻿@model IEnumerable<Cookware.Models.Product>
+﻿@using Microsoft.AspNetCore.Identity;
+@using Cookware.Models;
+
+@model IEnumerable<Cookware.Models.Product>
 
 @{
     ViewData["Title"] = "Index";
@@ -7,6 +10,8 @@
 @{
     Layout = "_Layout";
 }
+
+@inject SignInManager<ApplicationUser> SignInManager
 
 @await Component.InvokeAsync("ShoppingCart")
 
@@ -20,11 +25,14 @@
             <input type="hidden" name="productID" value="@item.ID" />
             <button>Details</button>
         </form>
-        <form action="/BasketItem/AddToCart" method="post">
-            <label for="Quantity">Qty. :</label>
-            <input type="number" name="Quantity" />
-            <input type="hidden" name="ProductID" value="@item.ID" />
-            <button>Add To Cart</button>
-        </form>
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <form action="/Product/AddToCart" method="post">
+                <label for="Quantity">Qty. :</label>
+                <input type="number" name="Quantity" />
+                <input type="hidden" name="ProductID" value="@item.ID" />
+                <button>Add To Cart</button>
+            </form>
+        }
     </div>
 }
