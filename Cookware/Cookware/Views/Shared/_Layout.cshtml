@@ -5,17 +5,21 @@
     <link href="~/StyleSheet.css" rel="stylesheet" />
 </head>
 <body>
-    <header>
-        <h1>cook && code</h1>
-    </header>
-
     <div class="nav">
-        <h4><a href="@Url.Action("Index", "Home")">HOME</a></h4>
-        <h4><a href="@Url.Action("Index", "Product")">SHOP</a></h4>
-        <h4><a href="@Url.Action("Index", "AboutUs")">ABOUT US</a></h4>
-
-
-
+        <header class="navhead">
+            <h1>cook && code</h1>
+        </header>
+        <ul class="navbar">
+            <li class="navitem">
+                <h4><a  href="@Url.Action("Index", "Home")">HOME</a></h4>
+            </li>
+            <li class="navitem">
+                <h4><a  href="@Url.Action("Index", "Product")">SHOP</a></h4>
+            </li>
+            <li class="navitem">
+                <h4><a  href="@Url.Action("Logout", "Controller")">LOG OUT</a></h4>
+            </li>
+        </ul>
     </div>
 </body>
 </html>
