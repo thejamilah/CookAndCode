@@ -1,0 +1,18 @@
+﻿@model List<Cookware.Models.BasketItem>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@{
+    Layout = "_Layout";
+}
+
+@foreach (var item in Model)
+{
+    <p>@item.Product.Name</p>
+    <p><img src="@item.Product.Image" /></p>
+    <p>@item.Product.Price</p>
+    <p>@item.Quantity</p>
+}
