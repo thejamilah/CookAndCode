@@ -1,6 +1,12 @@
 ﻿@model List<Cookware.Models.BasketItem>
 
-@foreach (var item in Model)
-{
-    <p>@item.Product.Name : Qty. - @item.Quantity</p>
-}
+
+<div class="cart">
+    <aside>
+        <a href="/BasketItem/Index">View Cart</a>
+        @foreach (var item in Model)
+        {
+            <p>@item.Product.Name : Qty. - @item.Quantity</p>
+        }
+    </aside>
+</div>

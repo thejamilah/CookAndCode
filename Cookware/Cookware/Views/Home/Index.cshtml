@@ -18,8 +18,7 @@
             @if (SignInManager.IsSignedIn(User))
             {
                 <p>Welcome, @User.Claims.First(x => x.Type == "FullName").Value</p>
-                <a class="link" href="Product/">shop</a>
-                <a class="link" href="CSharp/">For CSharp Lovers Only</a>
+                <a class="link" href="Product/">shop</a> <a class="link" href="CSharp/">For CSharp Lovers Only</a>
                 <a class="link" href="Over21/">Over 21</a>
                 <form asp-action="Logout" asp-controller="Account" method="post">
                     <button type="submit">Log Out</button>
@@ -32,12 +31,13 @@
                 <a class="link" href="Product/">shop</a>
 
             }
+            </div>
         </div>
-    </div>
-    <div class="spacer">
-Cook && Code is a place where two interests intersect.  Cooking new and delicious things and programming.  Here you will find anything from a high tech digital thermometer to an article of clothing with quirky code scripts printed on them.  Enjoy browsing the items we have procured specificaly for people who share our two interests.  Happy Shopping!</div>
-    <div class="middle">
+        <div class="spacer">
+            Cook && Code is a place where two interests intersect.  Cooking new and delicious things and programming.  Here you will find anything from a high tech digital thermometer to an article of clothing with quirky code scripts printed on them.  Enjoy browsing the items we have procured specificaly for people who share our two interests.  Happy Shopping!
+        </div>
+        <div class="middle">
 
-    </div>
-</body>
+        </div>
+    </body>
 </html>

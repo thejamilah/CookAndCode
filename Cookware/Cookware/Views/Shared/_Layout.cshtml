@@ -7,17 +7,22 @@
 <body>
     <div class="nav">
         <header class="navhead">
-            <h1>cook && code</h1>
+            <a class="navlink" href="@Url.Action("Index", "Home")"><h1>cook && code</h1></a>
         </header>
         <ul class="navbar">
             <li class="navitem">
-                <h4><a  href="@Url.Action("Index", "Home")">HOME</a></h4>
+                <form action="/Account/Logout" method="post">
+                    <button class="navlink navbutton">LOG OUT</button>
+                </form>
             </li>
             <li class="navitem">
-                <h4><a  href="@Url.Action("Index", "Product")">SHOP</a></h4>
+                <h4><a class="navlink" href="@Url.Action("Index", "BasketItem")">VIEW CART</a></h4>
             </li>
             <li class="navitem">
-                <h4><a  href="@Url.Action("Logout", "Controller")">LOG OUT</a></h4>
+                <h4><a class="navlink" href="@Url.Action("Index", "Product")">SHOP</a></h4>
+            </li>
+            <li class="navitem">
+                <h4><a class="navlink" href="@Url.Action("Index", "Home")">HOME</a></h4>
             </li>
         </ul>
     </div>

@@ -13,26 +13,28 @@
 
 @inject SignInManager<ApplicationUser> SignInManager
 
-@await Component.InvokeAsync("ShoppingCart")
 
-@foreach (var item in Model)
-{
-    <div class="productAll">
-        <p><img src="@item.Image" /></p>
-        <p>@item.Name</p>
-        <p>@item.Price</p>
-        <form method="post" id="Details" action="@Url.Action("Details", "Product")">
-            <input type="hidden" name="productID" value="@item.ID" />
-            <button>Details</button>
-        </form>
-        @if (SignInManager.IsSignedIn(User))
-        {
-            <form action="/Product/AddToCart" method="post">
-                <label for="Quantity">Qty. :</label>
-                <input type="number" name="Quantity" />
-                <input type="hidden" name="ProductID" value="@item.ID" />
-                <button>Add To Cart</button>
+<div class="deck">
+    @foreach (var item in Model)
+    {
+        <div class="card">
+            <p><img src="@item.Image" /></p>
+            <p>@item.Name</p>
+            <p>$@item.Price USD</p>
+            <form method="post" id="Details" action="@Url.Action("Details", "Product")">
+                <input type="hidden" name="productID" value="@item.ID" />
+                <button class="button">Details</button>
             </form>
-        }
-    </div>
-}
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <form action="/BasketItem/AddToCart" method="post">
+                    <label for="Quantity">Qty. :</label>
+                    <input class="qtyinput" type="number" name="Quantity" />
+                    <input type="hidden" name="ProductID" value="@item.ID" />
+                    <button class="button">Add To Cart</button>
+                </form>
+            }
+        </div>
+    }
+</div>
+@await Component.InvokeAsync("ShoppingCart")
