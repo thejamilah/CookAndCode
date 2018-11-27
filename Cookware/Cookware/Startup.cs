@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Cookware.Models.Handlers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Cookware
 {
@@ -49,11 +50,12 @@ namespace Cookware
             {
                 options.AddPolicy("MustBe21ToPurchase", policy => policy.Requirements.Add(new MinAgeRequirement(21)));
                 options.AddPolicy("FavoriteLanguage", policy => policy.RequireClaim("FavoriteLanguage"));
-                
+                options.AddPolicy("SchoolEmail", policy => policy.Requirements.Add(new SchoolEmailHandler()));
             });
 
             services.AddTransient<IProducts, ProductService>();
             services.AddTransient<IBasketItem, BasketItemService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
