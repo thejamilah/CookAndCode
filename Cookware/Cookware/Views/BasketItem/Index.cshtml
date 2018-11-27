@@ -12,12 +12,20 @@
 <div class="deck">
     @foreach (var item in Model)
     {
-        <div class="card">
-            <p>@item.Product.Name</p>
-            <p><img src="@item.Product.Image" /></p>
-            <p>$@item.Product.Price USD</p>
-            <p>Quanity: @item.Quantity</p>
-        </div>
+    <div class="card">
+        <p>@item.Product.Name</p>
+        <p><img src="@item.Product.Image" /></p>
+        <p>$@item.Product.Price USD</p>
+        <p>Quanity: @item.Quantity</p>
+        <form method="post" id="Edit" action="@Url.Action("Index", "BasketItem")">
+            <input type="hidden" name="productID" value="@item.Product.ID" />
+            <button class="button">Update</button>
+        </form>
+        <form method="post" id="Delete" action="@Url.Action("Index", "BasketItem")">
+            <input type="hidden" name="productID" value="@item.Product.ID" />
+            <button class="button">Delete</button>
+        </form>      
+    </div>
     }
         <a class="button" href="/Checkout/Receipt">Checkout</a>
 </div>

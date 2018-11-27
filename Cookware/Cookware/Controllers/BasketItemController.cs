@@ -23,11 +23,8 @@ namespace Cookware.Controllers
             _userManager = userManager;
             _products = products;
             _basketItem = basketItem;
-            _context = context;
-            
+            _context = context;      
         }
-
-
 
         /// <summary>
         /// adds basket item and relates product to user with quantity
@@ -95,6 +92,10 @@ namespace Cookware.Controllers
             return View(shoppingCart);
         }
 
-        //public async Task<IActionResult> UpdateBasket()
+        [HttpPost, ActionName("UpdateCart")]
+        public async Task<IActionResult> UpdateProduct(int id)
+        {
+            return View();
+        }
     }
 }
