@@ -51,9 +51,9 @@ body {
     text-align: center;
 }
 
-    .logreg p {
-        color: whitesmoke;
-    }
+.logreg p {
+    color: whitesmoke;
+}
 
 .link {
     text-decoration: none;
@@ -62,9 +62,9 @@ body {
     color: #67242d;
 }
 
-    .link:hover, .navlink:hover {
-        color: #67242d
-    }
+.link:hover, .navlink:hover {
+    color: #67242d
+}
 
 
 /*================ Nav Bar ================*/
@@ -114,9 +114,9 @@ a {
     border: none;
 }
 
-    .navbutton:hover {
-        cursor: pointer;
-    }
+.navbutton:hover {
+    cursor: pointer;
+}
 
 
 /*================ Product Page ================*/
@@ -140,16 +140,16 @@ a {
     border: 1px solid silver;
 }
 
-    .card img {
-        height: auto;
-        width: 75%;
-        border-radius: 5px;
-    }
+.card img {
+    height: auto;
+    width: 75%;
+    border-radius: 5px;
+}
 
-    .card p:nth-child(2) {
-        width: 90%;
-        margin: 1% auto;
-    }
+.card p:nth-child(2) {
+    width: 90%;
+    margin: 1% auto;
+}
 
 .cart {
     float: left;
