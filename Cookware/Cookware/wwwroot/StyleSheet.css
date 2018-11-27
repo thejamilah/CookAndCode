@@ -8,11 +8,27 @@ body {
     margin: 0;
 }
 
+/*================ Log/Reg Page ================*/
+.wrapper {
+    background-image: url(bg3.jpg);
+    min-height: 100%;
+}
+
+.logreg_form{
+    width: 30%;
+    margin: 0 auto;
+    padding-top: 15%;
+    border-radius: 5px;
+}
+
+.logreg_form input{
+    display: block;
+}
+
 /*================ Home Page ================*/
-.top, .spacer, .middle {
+.top, .spacer, .middle, .wrapper {
     position: relative;
     width: 100%;
-    opacity: .95;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
