@@ -111,5 +111,6 @@ namespace Cookware.Data
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<BasketItem> BasketItems { get; set; }
     }
 }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Cookware.Models;
 using Cookware.Models.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,13 +15,17 @@ namespace Cookware.Controllers
     [AllowAnonymous]
     public class ProductController : Controller
     {
+        private UserManager<ApplicationUser> _userManager;
         private readonly IProducts _products;
+        private readonly IBasketItem _basketItem;
 
-        public ProductController(IProducts products)
+        public ProductController(UserManager<ApplicationUser> userManager, IProducts products, IBasketItem basketItem)
         {
+            _userManager = userManager;
             _products = products;
+            _basketItem = basketItem;
         }
-
+        
         /// <summary>
         /// index shows all products
         /// </summary>
@@ -35,14 +40,15 @@ namespace Cookware.Controllers
         /// </summary>
         /// <param name="id">Product ID</param>
         /// <returns>Product Detail</returns>
-        public async Task<IActionResult> Details(int? id)
+        [HttpPost]
+        public async Task<IActionResult> Details(int? productID)
         {
-            if(id == null)
+            if(productID == null)
             {
                 return NotFound();
             }
 
-            var product = await _products.GetProduct(id);
+            var product = await _products.GetProduct(productID);
             if(product == null)
             {
                 return NotFound();
@@ -169,5 +175,6 @@ namespace Cookware.Controllers
         {
             return _products.GetProduct(id) != null;
         }
+
     }
 }

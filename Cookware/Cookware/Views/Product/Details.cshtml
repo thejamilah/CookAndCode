@@ -1,5 +1,22 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Cookware.Models.Product
+
 @{
+    ViewData["Title"] = "Details";
+    Layout = "_Layout";
 }
+
+
+<div class="productAll">
+    <p><img src="@Model.Image" /></p>
+    <p>@Model.Name</p>
+    <p>@Model.Price</p>
+    <p>@Model.Description</p>
+</div>
+
+<form action="/BasketItem/AddToCart" method="post">
+    <label for="Quantity">Qty. :</label>
+    <input type="number" name="Quantity" />
+    <input type="hidden" name="ProductID" value="@Model.ID" />
+    <button>Add To Cart</button>
+</form>
+
