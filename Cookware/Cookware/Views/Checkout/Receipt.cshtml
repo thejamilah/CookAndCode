@@ -1,0 +1,47 @@
+﻿
+@model List<Cookware.Models.BasketItem>
+
+
+@{
+    ViewData["Title"] = "Receipt";
+}
+
+@{
+    Layout = "_Layout";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table class="receipt">
+        <thead>
+            <tr>
+                <td>Item</td>
+                <td>Price</td>
+                <td>Qty.</td>
+            </tr>
+        </thead>
+        <tbody>
+            @{ decimal total = 0;
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Product.Name</td>
+                        <td>$@item.Product.Price USD</td>
+                        <td>@item.Quantity</td>
+                        @{ total += (item.Quantity * item.Product.Price);}
+                    </tr>
+                }
+                <tr>
+                    <td><h3>Grand Total:</h3></td>
+                    <td><h3>$@total USD</h3></td>
+                    <td></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
