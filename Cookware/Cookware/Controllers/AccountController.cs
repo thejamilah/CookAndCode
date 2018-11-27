@@ -65,7 +65,7 @@ namespace Cookware.Controllers
                         ClaimTypes.DateOfBirth,
                         new DateTime(user.Birthday.Year, user.Birthday.Month, user.Birthday.Day).ToString("u"), ClaimValueTypes.DateTime);
 
-                    Claim languageClaim = new Claim("FavoriteLanguage", "C#");
+                    Claim languageClaim = new Claim("FavoriteLanguage", user.Language);
 
                     List<Claim> myclaims = new List<Claim>()
                     {
