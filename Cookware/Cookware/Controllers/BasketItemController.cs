@@ -38,14 +38,28 @@ namespace Cookware.Controllers
         [HttpPost, ActionName("AddToCart")]
         public async Task<IActionResult> CreateBasketItem(int ProductID, int Quantity)
         {
-            BasketItem newItem = new BasketItem()
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            var ID = user.Id;
+            var basketItem = _context.BasketItems.SingleOrDefault(
+                b => b.ProductID == ProductID && b.UserID == ID);
+            if (basketItem == null)
             {
-                ProductID = ProductID,
-                Quantity = Quantity,
-                UserID = _userManager.GetUserId(User)
-            };
+                BasketItem newItem = new BasketItem()
+                {
+                    ProductID = ProductID,
+                    Quantity = Quantity,
+                    UserID = _userManager.GetUserId(User)
+                };
 
-            await _basketItem.CreateBasketItem(newItem);
+                await _basketItem.CreateBasketItem(newItem);
+            }
+
+            else
+            {
+                basketItem.Quantity++;
+            }
+
+            _context.SaveChanges();
 
             return RedirectToAction("Index", "Product");
         }
@@ -80,5 +94,7 @@ namespace Cookware.Controllers
            
             return View(shoppingCart);
         }
+
+        //public async Task<IActionResult> UpdateBasket()
     }
 }
