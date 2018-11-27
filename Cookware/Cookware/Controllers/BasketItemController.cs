@@ -15,62 +15,62 @@ namespace Cookware.Controllers
     {
         private UserManager<ApplicationUser> _userManager;
         private CookwareDBContext _context;
-        //private readonly IProducts _products;
-        //private readonly IBasketItem _basketItem;
+        private readonly IProducts _products;
+        private readonly IBasketItem _basketItem;
 
         public BasketItemController(UserManager<ApplicationUser> userManager, IProducts products, IBasketItem basketItem, CookwareDBContext context)
         {
             _userManager = userManager;
-            //_products = products;
-            //_basketItem = basketItem;
+            _products = products;
+            _basketItem = basketItem;
             _context = context;
             
         }
 
 
 
-        ///// <summary>
-        ///// adds basket item and relates product to user with quantity
-        ///// </summary>
-        ///// <param name="ProductID">Id for product being added</param>
-        ///// <param name="Quantity">quantity of item selected by user</param>
-        ///// <returns>Index view of product controller</returns>
-        //[HttpPost, ActionName("AddToCart")]
-        //public async Task<IActionResult> CreateBasketItem(int ProductID, int Quantity)
-        //{
-        //    BasketItem newItem = new BasketItem()
-        //    {
-        //        ProductID = ProductID,
-        //        Quantity = Quantity,
-        //        UserID = _userManager.GetUserId(User)
-        //    };
+        /// <summary>
+        /// adds basket item and relates product to user with quantity
+        /// </summary>
+        /// <param name="ProductID">Id for product being added</param>
+        /// <param name="Quantity">quantity of item selected by user</param>
+        /// <returns>Index view of product controller</returns>
+        [HttpPost, ActionName("AddToCart")]
+        public async Task<IActionResult> CreateBasketItem(int ProductID, int Quantity)
+        {
+            BasketItem newItem = new BasketItem()
+            {
+                ProductID = ProductID,
+                Quantity = Quantity,
+                UserID = _userManager.GetUserId(User)
+            };
 
-        //    await _basketItem.CreateBasketItem(newItem);
+            await _basketItem.CreateBasketItem(newItem);
 
-        //    return RedirectToAction("Index", "BasketItem");
-        //}
+            return RedirectToAction("Index", "Product");
+        }
 
-        //public async Task<IActionResult> ViewBasket()
-        //{
-        //    var user = await _userManager.GetUserAsync(HttpContext.User);
-        //    var ID = user.Id;
-        //    var shoppingCart = await _context.BasketItems.Where(x => x.UserID == ID).ToListAsync();
+        public async Task<IActionResult> ViewBasket()
+        {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            var ID = user.Id;
+            var shoppingCart = await _context.BasketItems.Where(x => x.UserID == ID).ToListAsync();
 
-        //    return View(shoppingCart);
-        //}
+            return View(shoppingCart);
+        }
 
-        //[HttpPost, ActionName("Delete")]
-        //public async Task<IActionResult> DeleteProduct(int id)
-        //{
-        //    await _products.DeleteProduct(id);
-        //    return RedirectToAction(nameof(Index));
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            await _products.DeleteProduct(id);
+            return RedirectToAction(nameof(Index));
 
-        //}
+        }
 
-        //private bool ProductExists(int id)
-        //{
-        //    return _products.GetProduct(id) != null;
-        //}
+        private bool ProductExists(int id)
+        {
+            return _products.GetProduct(id) != null;
+        }
 
         public async Task<IActionResult> Index()
         {
