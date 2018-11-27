@@ -7,6 +7,9 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System;
+using SendGrid;
+using SendGrid.Helpers.Mail;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace Cookware.Controllers
 {
@@ -15,11 +18,13 @@ namespace Cookware.Controllers
     {
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> _signInManager;
+        private IEmailSender _email;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailSender email)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _email = email;
         }
 
         /// <summary>
@@ -79,6 +84,10 @@ namespace Cookware.Controllers
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
 
+
+                    //SendGrid Email
+                    await _email.SendEmailAsync(registervm.Email, "Registration Successful", $"<h1>Welcome, {registervm.FirstName}!</h1>  <p>Thank you for registering to Cook&&Code.  You will now receive exclusive deals on cool stuff!</p>");
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -92,7 +101,7 @@ namespace Cookware.Controllers
             }
             return View(registervm);
         }
-
+        
         /// <summary>
         /// Displays Login Page
         /// </summary>
