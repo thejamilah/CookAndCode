@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Cookware.Models.Handlers;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace Cookware
 {
@@ -55,6 +56,7 @@ namespace Cookware
 
             services.AddTransient<IProducts, ProductService>();
             services.AddTransient<IBasketItem, BasketItemService>();
+            services.AddScoped<IEmailSender, EmailSender>();
 
         }
 

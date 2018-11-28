@@ -23,11 +23,8 @@ namespace Cookware.Controllers
             _userManager = userManager;
             _products = products;
             _basketItem = basketItem;
-            _context = context;
-            
+            _context = context;      
         }
-
-
 
         /// <summary>
         /// adds basket item and relates product to user with quantity
@@ -38,14 +35,28 @@ namespace Cookware.Controllers
         [HttpPost, ActionName("AddToCart")]
         public async Task<IActionResult> CreateBasketItem(int ProductID, int Quantity)
         {
-            BasketItem newItem = new BasketItem()
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            var ID = user.Id;
+            var basketItem = _context.BasketItems.SingleOrDefault(
+                b => b.ProductID == ProductID && b.UserID == ID);
+            if (basketItem == null)
             {
-                ProductID = ProductID,
-                Quantity = Quantity,
-                UserID = _userManager.GetUserId(User)
-            };
+                BasketItem newItem = new BasketItem()
+                {
+                    ProductID = ProductID,
+                    Quantity = Quantity,
+                    UserID = _userManager.GetUserId(User)
+                };
 
-            await _basketItem.CreateBasketItem(newItem);
+                await _basketItem.CreateBasketItem(newItem);
+            }
+
+            else
+            {
+                basketItem.Quantity++;
+            }
+
+            _context.SaveChanges();
 
             return RedirectToAction("Index", "Product");
         }
@@ -60,9 +71,12 @@ namespace Cookware.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        public async Task<IActionResult> DeleteProduct(int id)
+        public async Task<IActionResult> DeleteBasketItem(int ProductID)
         {
-            await _products.DeleteProduct(id);
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            var ID = user.Id;
+                
+            await _basketItem.DeleteBasketItem(ProductID, ID);
             return RedirectToAction(nameof(Index));
 
         }
@@ -80,5 +94,23 @@ namespace Cookware.Controllers
            
             return View(shoppingCart);
         }
+
+        [HttpPost, ActionName("Update")]
+        public async Task<IActionResult> UpdateBasketItem(int ID, int ProductID, int Quantity)
+        {
+            BasketItem updateItem = new BasketItem()
+            {
+                ID = ID,
+                ProductID = ProductID,
+                Quantity = Quantity,
+                UserID = _userManager.GetUserId(User)
+            };
+
+            await _basketItem.UpdateBasketItem(updateItem);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
     }
 }
