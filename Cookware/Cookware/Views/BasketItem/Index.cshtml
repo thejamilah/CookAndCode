@@ -17,8 +17,10 @@
         <p><img src="@item.Product.Image" /></p>
         <p>$@item.Product.Price USD</p>
         <p>Quanity: @item.Quantity</p>
-        <form method="post" id="Edit" action="@Url.Action("Index", "BasketItem")">
-            <input type="hidden" name="productID" value="@item.Product.ID" />
+        <form method="post" id="Edit" action="@Url.Action("Update", "BasketItem")">
+            <input type="number" name="Quantity" />
+            <input type="hidden" name="ProductID" value="@item.Product.ID" />
+            <input type="hidden" name="ID" value="@item.ID" />
             <button class="button">Update</button>
         </form>
         <form method="post" id="Delete" action="@Url.Action("Delete", "BasketItem")">
