@@ -95,6 +95,22 @@ namespace Cookware.Controllers
             return View(shoppingCart);
         }
 
+        [HttpPost, ActionName("Update")]
+        public async Task<IActionResult> UpdateBasketItem(int ID, int ProductID, int Quantity)
+        {
+            BasketItem updateItem = new BasketItem()
+            {
+                ID = ID,
+                ProductID = ProductID,
+                Quantity = Quantity,
+                UserID = _userManager.GetUserId(User)
+            };
+
+            await _basketItem.UpdateBasketItem(updateItem);
+
+            return RedirectToAction(nameof(Index));
+        }
+
 
     }
 }
