@@ -21,6 +21,10 @@ body {
     border-radius: 5px;
 }
 
+.regform{
+    padding-top:10%;
+}
+
 .logreg_form input{
     display: block;
 }
