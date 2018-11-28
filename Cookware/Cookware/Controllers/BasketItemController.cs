@@ -71,9 +71,12 @@ namespace Cookware.Controllers
         }
 
         [HttpPost, ActionName("Delete")]
-        public async Task<IActionResult> DeleteProduct(int id)
+        public async Task<IActionResult> DeleteBasketItem(int ProductID)
         {
-            await _products.DeleteProduct(id);
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            var ID = user.Id;
+                
+            await _basketItem.DeleteBasketItem(ProductID, ID);
             return RedirectToAction(nameof(Index));
 
         }
@@ -92,10 +95,6 @@ namespace Cookware.Controllers
             return View(shoppingCart);
         }
 
-        [HttpPost, ActionName("UpdateCart")]
-        public async Task<IActionResult> UpdateProduct(int id)
-        {
-            return View();
-        }
+
     }
 }
