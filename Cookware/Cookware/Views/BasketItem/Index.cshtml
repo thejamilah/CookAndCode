@@ -21,7 +21,7 @@
             <input type="hidden" name="productID" value="@item.Product.ID" />
             <button class="button">Update</button>
         </form>
-        <form method="post" id="Delete" action="@Url.Action("Index", "BasketItem")">
+        <form method="post" id="Delete" action="@Url.Action("Delete", "BasketItem")">
             <input type="hidden" name="productID" value="@item.Product.ID" />
             <button class="button">Delete</button>
         </form>      

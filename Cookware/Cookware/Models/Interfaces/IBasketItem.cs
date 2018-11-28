@@ -11,12 +11,12 @@ namespace Cookware.Models.Interfaces
         //Read
         Task<IEnumerable<BasketItem>> GetBasketItems();
 
-        Task<BasketItem> GetBasketItem(int? id);
+        Task<BasketItem> GetBasketItem(int ProductID, string ID);
 
         //Update
         Task UpdateBasketItem(BasketItem basketItem);
 
         //Delete
-        Task DeleteBasketItem(int id);
+        Task DeleteBasketItem(int ProductID, string ID);
     }
 }
