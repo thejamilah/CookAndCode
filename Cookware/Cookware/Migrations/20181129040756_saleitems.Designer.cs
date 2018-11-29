@@ -3,14 +3,16 @@ using Cookware.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Cookware.Migrations
 {
     [DbContext(typeof(CookwareDBContext))]
-    partial class CookwareDBContextModelSnapshot : ModelSnapshot
+    [Migration("20181129040756_saleitems")]
+    partial class saleitems
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,10 +75,10 @@ namespace Cookware.Migrations
                         new { ID = 9, Description = "Our most powerful Stand Mixer motor are 1.3 HP. The high efficiency, quiet motor delivers .44 HP to the bowl and is designed to run longer and deliver optimum torque with less heat build-up. Our longest lasting quietest stand mixer design with all metal gears. This robust mixer was designed to last longer and deliver ultimate performance with less noise.", Image = "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQRcVeKzC6rEjj5LJI0-O7gew2r-vRNqOuzG3WPkLFq8W_z073CyQ5pL5unWlEUz5qjO1jWeK0DDZm0wmMzyfkikVAybgNk&usqp=CAY", Name = "KitchenAid Pro Line 7-Quart Stand Mixer - Copper", Price = 89.99m, Sku = "86-9345021" },
                         new { ID = 10, Description = "The Vacuvita Home Base is a great way to store food on your kitchen countertop. Instead of taking up space in your cupboard or kitchen, this system vacuum seals its contents every single time it is closed. This means that you can reduce waste (because food will last much longer) and the associated app will also help you keep track of your stored foods so you know when it’s time to eat them. Never eat an unripe avocado again. It’s also perfect for travel, or for a chef on the go.", Image = "https://d3f8t323tq9ys5.cloudfront.net/uploads/2016/06/product-58d758d281e47-Front-700x700.jpg", Name = "Vacuvita® Home Base One-Touch Vacuum Storage System", Price = 19.99m, Sku = "927348829849" },
                         new { ID = 11, Description = "Walk away grab some coffee and…Debug with the Bug Mug.", Image = "https://i.etsystatic.com/14324740/r/il/413be1/1178722036/il_570xN.1178722036_jdgl.jpg", Name = "Bug Mug", Price = 8.99m, Sku = "48194738837" },
-                        new { ID = 12, Description = "Open the Wine, it has been a long day.", Image = " https://i.etsystatic.com/6222536/r/il/7b5ae8/1439288282/il_fullxfull.1439288282_ghq5.jpg", Name = "WineTime();", Price = 3.99m, Sku = "6194730037" },
-                        new { ID = 13, Description = "Jim...I'm a engineer, not a spelling bee champ!", Image = " https://i.etsystatic.com/15309885/r/il/a52246/1560435265/il_570xN.1560435265_9vge.jpg", Name = "Program???", Price = 10.95m, Sku = "3214735037" },
+                        new { ID = 12, Description = "Open the Wine, it has been a long day.", Image = " https://i.etsystatic.com/6222536/r/il/7b5ae8/1439288282/il_fullxfull.1439288282_ghq5.jpg", Name = "Wine();", Price = 3.99m, Sku = "6194730037" },
+                        new { ID = 13, Description = "It is a logical question.", Image = " https://i.etsystatic.com/15309885/r/il/a52246/1560435265/il_570xN.1560435265_9vge.jpg", Name = "Or Not to Be", Price = 10.95m, Sku = "3214735037" },
                         new { ID = 14, Description = "The perfect gift for that one person that is THAT programmer. Passive aggression at its finest.", Image = " https://i.etsystatic.com/13197135/r/il/e0723e/1109237450/il_570xN.1109237450_ll52.jpg", Name = "5PM Mug", Price = 10.95m, Sku = "8997357351" },
-                        new { ID = 15, Description = " Software Tee - It's Not A Bug It's An Undocumented Feature", Image = " https://i.etsystatic.com/14803127/r/il/cf25a5/1319272634/il_570xN.1319272634_qeok.jpg", Name = "Feature Tee", Price = 9.99m, Sku = "8197357274" }
+                        new { ID = 15, Description = " Software Tee - Computing Top - It's Not A Bug It's An Undocumented Feature", Image = " https://i.etsystatic.com/14803127/r/il/cf25a5/1319272634/il_570xN.1319272634_qeok.jpg", Name = "Feature Tee", Price = 9.99m, Sku = "8197357274" }
                     );
                 });
 
