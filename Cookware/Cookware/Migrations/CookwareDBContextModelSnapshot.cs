@@ -59,6 +59,10 @@ namespace Cookware.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Orders");
+
+                    b.HasData(
+                        new { ID = 1, CreditCard = 0, OrderDate = new DateTime(2018, 11, 29, 11, 32, 25, 200, DateTimeKind.Local), Total = 0.00m, UserID = "default" }
+                    );
                 });
 
             modelBuilder.Entity("Cookware.Models.Product", b =>

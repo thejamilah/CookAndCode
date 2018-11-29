@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cookware.Migrations
 {
     [DbContext(typeof(CookwareDBContext))]
-    [Migration("20181129183655_newitems")]
+    [Migration("20181129193225_newitems")]
     partial class newitems
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -61,6 +61,10 @@ namespace Cookware.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Orders");
+
+                    b.HasData(
+                        new { ID = 1, CreditCard = 0, OrderDate = new DateTime(2018, 11, 29, 11, 32, 25, 200, DateTimeKind.Local), Total = 0.00m, UserID = "default" }
+                    );
                 });
 
             modelBuilder.Entity("Cookware.Models.Product", b =>
@@ -104,13 +108,13 @@ namespace Cookware.Migrations
                         new { ID = 12, Description = "Open the Wine, it has been a long day.", Image = " https://i.etsystatic.com/6222536/r/il/7b5ae8/1439288282/il_fullxfull.1439288282_ghq5.jpg", LanguageIsCSharp = false, Name = "WineTime();", Price = 3.99m, Sku = "6194730037" },
                         new { ID = 13, Description = "Jim...I'm a engineer, not a spelling bee champ!", Image = " https://i.etsystatic.com/15309885/r/il/a52246/1560435265/il_570xN.1560435265_9vge.jpg", LanguageIsCSharp = false, Name = "Program???", Price = 10.95m, Sku = "3214735037" },
                         new { ID = 14, Description = "The perfect gift for that one person that is THAT programmer. Passive aggression at its finest.", Image = " https://i.etsystatic.com/13197135/r/il/e0723e/1109237450/il_570xN.1109237450_ll52.jpg", LanguageIsCSharp = false, Name = "5PM Mug", Price = 10.95m, Sku = "8997357351" },
-                        new { ID = 15, Description = " Software Tee - It's Not A Bug It's An Undocumented Feature", Image = " https://i.etsystatic.com/14803127/r/il/cf25a5/1319272634/il_570xN.1319272634_qeok.jpg", LanguageIsCSharp = false, Name = "Feature Tee", Price = 9.99m, Sku = "8197357274" },
-                        new { ID = 16, Description = "I WEAR GLASSES SO I CAN C#- Funny well - design for C# programmers, computer programmers, IT department, software engineers, web developers, web designers, workers or any coder that is obsessed with all things coding.", Image = "https://d3f8t323tq9ys5.cloudfront.net/uploads/2016/06/product-58d758d281e47-Front-700x700.jpg", LanguageIsCSharp = true, Name = "See Sharp", Price = 9.99m, Sku = "92894738849" },
+                        new { ID = 15, Description = " Software Tee - It's Not A Bug It's An Undocumented Feature", Image = "http://cdn.shopify.com/s/files/1/1306/0683/products/its_not_a_bug_its_a_feature_shirts_376f3779-2e77-4c53-8f2e-31f0064efb69_grande.jpeg?v=1473326028", LanguageIsCSharp = false, Name = "Feature Tee", Price = 9.99m, Sku = "8197357274" },
+                        new { ID = 16, Description = "I WEAR GLASSES SO I CAN C#- Funny well - design for C# programmers, computer programmers, IT department, software engineers, web developers, web designers, workers or any coder that is obsessed with all things coding.", Image = "https://ih1.redbubble.net/image.659610062.9120/gptr,1400x,front,black-c,313,133,750,1000-bg,f8f8f8.u3.jpg", LanguageIsCSharp = true, Name = "See Sharp", Price = 9.99m, Sku = "92894738849" },
                         new { ID = 17, Description = " Keep calm and Trust Sharp. Keep the caffeine and code going and declare your C#", Image = "https://i3.cpcache.com/product/1209496982/keep_calm_and_trust_sharp_mugs.jpg?side=Back&color=WhiteBlackInside&height=460&width=460&qv=90", LanguageIsCSharp = true, Name = "Trust the Sharp", Price = 12.99m, Sku = "92734334893" },
                         new { ID = 18, Description = "Pac C#", Image = " https://ih1.redbubble.net/image.240961388.0811/ra,fitted_scoop,x2000,dd2121:8219e99865,front-c,285,143,750,1000-bg,f8f8f8.u1.jpg", LanguageIsCSharp = true, Name = "Pac Sharp", Price = 14.99m, Sku = "92731228437" },
                         new { ID = 19, Description = "Be extra and keep your extras in the C Sharp Attack pouch", Image = " https://ih0.redbubble.net/image.437945136.0089/pr,150x100,750x1000-bg,f8f8f8.2u1.jpg", LanguageIsCSharp = true, Name = "Sharp Attack", Price = 4.99m, Sku = "457131228437" },
                         new { ID = 20, Description = "Protect your iPad from ridicule while you are at Microsoft", Image = "https://ih1.redbubble.net/image.537839260.5113/mwo,x1000,ipad_2_snap-pad,750x1000,f8f8f8.lite-1u1.jpg", LanguageIsCSharp = true, Name = "Sharp iPad Cover", Price = 4.99m, Sku = "54212271027" },
-                        new { ID = 21, Description = "Careful, there is something Sharp on your bed!", Image = " https://d1ielco78gv5pf.cloudfront.net/assets/clear-495a83e08fc8e5d7569efe6339a1228ee08292fa1f2bee8e0be6532990cb3852.gif", LanguageIsCSharp = true, Name = "Sharp Duvet", Price = 24.99m, Sku = "54212271027" }
+                        new { ID = 21, Description = "Careful, there is something Sharp on your bed!", Image = "https://ih1.redbubble.net/image.566658231.9215/dc%2C450x490%2Ctwin%2Cbed-pad%2C420x460%2Cf8f8f8.lite-1u8.jpg", LanguageIsCSharp = true, Name = "Sharp Duvet", Price = 24.99m, Sku = "54212271027" }
                     );
                 });
 

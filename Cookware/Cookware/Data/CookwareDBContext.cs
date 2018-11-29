@@ -244,6 +244,17 @@ namespace Cookware.Data
                 }
 
                 );
+
+            modelBuilder.Entity<Order>().HasData(
+    new Order
+    {
+        ID = 1,
+        UserID = "default",
+        OrderDate = DateTime.Now,
+        CreditCard = 0000,
+        Total = 0.00M,
+
+    });
         }
 
         public DbSet<Product> Products { get; set; }
