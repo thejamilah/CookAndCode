@@ -106,7 +106,57 @@ namespace Cookware.Data
                     Price = 19.99M,
                     Description = "The Vacuvita Home Base is a great way to store food on your kitchen countertop. Instead of taking up space in your cupboard or kitchen, this system vacuum seals its contents every single time it is closed. This means that you can reduce waste (because food will last much longer) and the associated app will also help you keep track of your stored foods so you know when it’s time to eat them. Never eat an unripe avocado again. It’s also perfect for travel, or for a chef on the go.",
                     Image = "https://d3f8t323tq9ys5.cloudfront.net/uploads/2016/06/product-58d758d281e47-Front-700x700.jpg"
+                },
+                new Product
+                {
+                    ID = 11,
+                    Sku = "48194738837",
+                    Name = "Bug Mug",
+                    Price = 8.99M,
+                    Description = "Walk away grab some coffee and…Debug with the Bug Mug.",
+                    Image = "https://i.etsystatic.com/14324740/r/il/413be1/1178722036/il_570xN.1178722036_jdgl.jpg"
+                },
+
+                new Product
+                {
+                    ID = 12,
+                    Sku = "6194730037",
+                    Name = "WineTime();",
+                    Price = 3.99M,
+                    Description = "Open the Wine, it has been a long day.",
+                    Image = " https://i.etsystatic.com/6222536/r/il/7b5ae8/1439288282/il_fullxfull.1439288282_ghq5.jpg"
+                },
+
+                new Product
+                {
+                    ID = 13,
+                    Sku = "3214735037",
+                    Name = "Program???",
+                    Price = 10.95M,
+                    Description = "Jim...I'm a engineer, not a spelling bee champ!",
+                    Image = " https://i.etsystatic.com/15309885/r/il/a52246/1560435265/il_570xN.1560435265_9vge.jpg"
+                },
+
+                new Product
+                {
+                    ID = 14,
+                    Sku = "8997357351",
+                    Name = "5PM Mug",
+                    Price = 10.95M,
+                    Description = "The perfect gift for that one person that is THAT programmer. Passive aggression at its finest.",
+                    Image = " https://i.etsystatic.com/13197135/r/il/e0723e/1109237450/il_570xN.1109237450_ll52.jpg"
+                },
+
+                new Product
+                {
+                    ID = 15,
+                    Sku = "8197357274",
+                    Name = "Feature Tee",
+                    Price = 9.99M,
+                    Description = " Software Tee - It's Not A Bug It's An Undocumented Feature",
+                    Image = " https://i.etsystatic.com/14803127/r/il/cf25a5/1319272634/il_570xN.1319272634_qeok.jpg"
                 }
+
                 );
         }
 
