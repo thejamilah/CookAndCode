@@ -1,0 +1,124 @@
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+namespace Cookware.Migrations
+{
+    public partial class newitems : Migration
+    {
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.CreateTable(
+                name: "Orders",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    UserID = table.Column<string>(nullable: true),
+                    OrderDate = table.Column<DateTime>(nullable: false),
+                    CreditCard = table.Column<int>(nullable: false),
+                    Total = table.Column<decimal>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Orders", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Sku = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    Price = table.Column<decimal>(nullable: false),
+                    Description = table.Column<string>(nullable: false),
+                    Image = table.Column<string>(nullable: false),
+                    LanguageIsCSharp = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BasketItems",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    ProductID = table.Column<int>(nullable: false),
+                    Quantity = table.Column<int>(nullable: false),
+                    UserID = table.Column<string>(nullable: true),
+                    OrderID = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BasketItems", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_BasketItems_Orders_OrderID",
+                        column: x => x.OrderID,
+                        principalTable: "Orders",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_BasketItems_Products_ProductID",
+                        column: x => x.ProductID,
+                        principalTable: "Products",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Products",
+                columns: new[] { "ID", "Description", "Image", "LanguageIsCSharp", "Name", "Price", "Sku" },
+                values: new object[,]
+                {
+                    { 1, "The Pancake Bot is the world’s first food printer capable of printing pancakes by automatically dispensing batter directly onto a griddle. Pancake designs can be loaded onto the Pancake Bot via SD card. Users can make their own pancake designs with the included software or browse through our online community that is updated with fun, new designs every week.", "https://images.homedepot-static.com/productImages/dc4da6a2-3be5-42f2-ab7a-23053eaca536/svn/black-dash-indoor-grills-pnkb01bk2-64_1000.jpg", false, "Pancakebot Pancake Printer Griddle", 19.99m, "305361728" },
+                    { 19, "Be extra and keep your extras in the C Sharp Attack pouch", " https://ih0.redbubble.net/image.437945136.0089/pr,150x100,750x1000-bg,f8f8f8.2u1.jpg", true, "Sharp Attack", 4.99m, "457131228437" },
+                    { 18, "Pac C#", " https://ih1.redbubble.net/image.240961388.0811/ra,fitted_scoop,x2000,dd2121:8219e99865,front-c,285,143,750,1000-bg,f8f8f8.u1.jpg", true, "Pac Sharp", 14.99m, "92731228437" },
+                    { 17, " Keep calm and Trust Sharp. Keep the caffeine and code going and declare your C#", "https://i3.cpcache.com/product/1209496982/keep_calm_and_trust_sharp_mugs.jpg?side=Back&color=WhiteBlackInside&height=460&width=460&qv=90", true, "Trust the Sharp", 12.99m, "92734334893" },
+                    { 16, "I WEAR GLASSES SO I CAN C#- Funny well - design for C# programmers, computer programmers, IT department, software engineers, web developers, web designers, workers or any coder that is obsessed with all things coding.", "https://d3f8t323tq9ys5.cloudfront.net/uploads/2016/06/product-58d758d281e47-Front-700x700.jpg", true, "See Sharp", 9.99m, "92894738849" },
+                    { 15, " Software Tee - It's Not A Bug It's An Undocumented Feature", " https://i.etsystatic.com/14803127/r/il/cf25a5/1319272634/il_570xN.1319272634_qeok.jpg", false, "Feature Tee", 9.99m, "8197357274" },
+                    { 14, "The perfect gift for that one person that is THAT programmer. Passive aggression at its finest.", " https://i.etsystatic.com/13197135/r/il/e0723e/1109237450/il_570xN.1109237450_ll52.jpg", false, "5PM Mug", 10.95m, "8997357351" },
+                    { 13, "Jim...I'm a engineer, not a spelling bee champ!", " https://i.etsystatic.com/15309885/r/il/a52246/1560435265/il_570xN.1560435265_9vge.jpg", false, "Program???", 10.95m, "3214735037" },
+                    { 12, "Open the Wine, it has been a long day.", " https://i.etsystatic.com/6222536/r/il/7b5ae8/1439288282/il_fullxfull.1439288282_ghq5.jpg", false, "WineTime();", 3.99m, "6194730037" },
+                    { 20, "Protect your iPad from ridicule while you are at Microsoft", "https://ih1.redbubble.net/image.537839260.5113/mwo,x1000,ipad_2_snap-pad,750x1000,f8f8f8.lite-1u1.jpg", true, "Sharp iPad Cover", 4.99m, "54212271027" },
+                    { 11, "Walk away grab some coffee and…Debug with the Bug Mug.", "https://i.etsystatic.com/14324740/r/il/413be1/1178722036/il_570xN.1178722036_jdgl.jpg", false, "Bug Mug", 8.99m, "48194738837" },
+                    { 9, "Our most powerful Stand Mixer motor are 1.3 HP. The high efficiency, quiet motor delivers .44 HP to the bowl and is designed to run longer and deliver optimum torque with less heat build-up. Our longest lasting quietest stand mixer design with all metal gears. This robust mixer was designed to last longer and deliver ultimate performance with less noise.", "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQRcVeKzC6rEjj5LJI0-O7gew2r-vRNqOuzG3WPkLFq8W_z073CyQ5pL5unWlEUz5qjO1jWeK0DDZm0wmMzyfkikVAybgNk&usqp=CAY", false, "KitchenAid Pro Line 7-Quart Stand Mixer - Copper", 89.99m, "86-9345021" },
+                    { 8, "Wake up to premium coffee right in your own home. No need to go to a coffee shop to get your morning fix. That is if you have this Nespresso Expert Espresso Machine. This coffee machine by De'Longhi lets you brew premium coffee in 4 convenient sizes: Americano, Espresso, Lungo, and Ristretto. As for the temperature settings, it has 3 distinct temperatures that you can choose from including medium, hot, and extra hot.All it takes is less than 30 seconds for your cup to be ready.It comes with a capsule testing pack, but after that, you had better get more Nepresso capsules because this is addicting!", "https://d3f8t323tq9ys5.cloudfront.net/uploads/2017/08/71g-omzSENL._SL1500_.jpg", false, "Nespresso Expert Espresso Machine", 49.99m, "12836924879" },
+                    { 7, "Monitor your propane supply from anywhere, and receive alerts when it's running low. Position your grill in range of your Wi - Fi network and connect to the Wink App on your mobile device to receive alerts. Tapping the sensor displays an LED reading of the gas level when your smartphone isn't handy, Works with all grills with non - hanging propane tanks", "https://images-na.ssl-images-amazon.com/images/I/61iQ1zrE6eL._SL1001_.jpg", false, "Quirky Refuel Smart Propane Tank Gauge", 5.00m, "12836924879" },
+                    { 6, "Range Dial is a versatile wireless cooking thermometer that can be used with or without your iPhone. Turn the machined stainless steel knob to set an alert, or use the iOS app for more control. ", "https://cdn.shopify.com/s/files/1/0103/5182/products/DSC_5124_grande_df13d5e4-bc6a-45e5-82d2-594c862dead6_1024x1024.jpg?v=1511328894", false, "Range Dial Grill Pro smart cooking thermometer", 19.95m, "12836924879" },
+                    { 5, "Hiku lives in your kitchen, scans barcodes and recognizes your voice – creating a shared shopping list on your phone so you always know what you need. Use the hiku shopping list app at the store – any store – and your list is always with you. Or connect hiku to online stores to make online shopping a breeze.", "https://static1.squarespace.com/static/51ffe599e4b08f2e358d388a/t/5a6bce718165f5e669c54397/1446508681698/?format=750w", false, "Hiku Smart Kitchen Button", 9.00m, "19874278053" },
+                    { 4, "Create your own menu from a list of 300 cocktails choices from the International Bartenders Association, mix any drink in 10 seconds and never leave a mess with automated cleaning.", "https://www.somabar.com/hs-fs/hubfs/LP%20Images/somabar-new-machine.png?t=1542147816232&width=935&name=somabar-new-machine.png", false, "Somabar Automated Bartender", 99.50m, "19874278053" },
+                    { 3, "This multi-functional digital scale is a versatile kitchen device which offers two options for weighing. You can either place items or bowls directly on to its top, or flip over the integrated lid to create a measuring bowl for weighing loose ingredients or liquids. Featuring an easy-to-read back-lit LCD display and touch-sensitive controls, it’s ready to weigh both liquids and dry foods in the following units – gms, lbs, ozs, fl.ozs, mls up to a maximum capacity of 5kg/176.4 fl.oz/11lb/5000ml. A convenient ‘add and weigh’ function allows multiple ingredients to be weighed during recipe preparation and an auto power-off feature maximizes battery life. It also has non-slip silicone feet.", "https://secure.img1-fg.wfcdn.com/im/00744531/resize-h800%5Ecompr-r85/1570/15708322/Switch+Scale.jpg", false, "Joseph Switch Scale", 36.87m, "1238647253" },
+                    { 2, "Simply fill your cup with water, place it on to the induction base, dip the metal rod into your cup, and turn the device on. The base will heat up the rod, thus heating the water surrounding the rod. The heat up time will vary depending on the size of your drinking vessel, but Miito can heat up a glass of water within 60 seconds or a kettle within in 2 and half minutes.", "https://odditymall.com/includes/content/miito-a-water-heater-that-heats-up-just-the-water-that-s-in-your-cup-thumb.jpg", false, "Miito: Water Heater", 22.00m, "1234567890" },
+                    { 10, "The Vacuvita Home Base is a great way to store food on your kitchen countertop. Instead of taking up space in your cupboard or kitchen, this system vacuum seals its contents every single time it is closed. This means that you can reduce waste (because food will last much longer) and the associated app will also help you keep track of your stored foods so you know when it’s time to eat them. Never eat an unripe avocado again. It’s also perfect for travel, or for a chef on the go.", "https://d3f8t323tq9ys5.cloudfront.net/uploads/2016/06/product-58d758d281e47-Front-700x700.jpg", false, "Vacuvita® Home Base One-Touch Vacuum Storage System", 19.99m, "927348829849" },
+                    { 21, "Careful, there is something Sharp on your bed!", " https://d1ielco78gv5pf.cloudfront.net/assets/clear-495a83e08fc8e5d7569efe6339a1228ee08292fa1f2bee8e0be6532990cb3852.gif", true, "Sharp Duvet", 24.99m, "54212271027" }
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BasketItems_OrderID",
+                table: "BasketItems",
+                column: "OrderID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BasketItems_ProductID",
+                table: "BasketItems",
+                column: "ProductID");
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "BasketItems");
+
+            migrationBuilder.DropTable(
+                name: "Orders");
+
+            migrationBuilder.DropTable(
+                name: "Products");
+        }
+    }
+}
