@@ -45,7 +45,8 @@ namespace Cookware.Controllers
                 {
                     ProductID = ProductID,
                     Quantity = Quantity,
-                    UserID = _userManager.GetUserId(User)
+                    UserID = _userManager.GetUserId(User),
+                    OrderID = 1
                 };
 
                 await _basketItem.CreateBasketItem(newItem);

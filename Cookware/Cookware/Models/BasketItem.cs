@@ -16,9 +16,13 @@ namespace Cookware.Models
 
         public string UserID { get; set; }
 
+        public int OrderID { get; set; }
+
         //Nav keys
 
         public Product Product { get; set; }
+
+        public Order Order { get; set; }
 
     }
 }
