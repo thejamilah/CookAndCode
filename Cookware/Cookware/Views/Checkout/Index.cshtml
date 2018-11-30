@@ -1,0 +1,21 @@
+﻿@model Cookware.Models.AccountViewModels.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "_Layout";
+}
+
+<div class="wrapper">
+    <form class="logreg_form regform" action="/Checkout/Checkout" method="post">
+        <h4>Please Enter Your Payment Information</h4>
+        <div class="form-group">
+            <label for="CreditCard">Credit Card Number</label>
+            <select name="CreditCard" id="CreditCard" class="form-control">
+                <option value=4111111111111111>Visa - 4111111111111111</option>
+                <option value=5424000000000015>MasterCard - 5424000000000015</option>
+                <option value=6011000000000012>Discover - 6011000000000012</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-default">Process</button>
+    </form>
+</div>
