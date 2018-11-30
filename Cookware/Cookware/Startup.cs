@@ -57,6 +57,7 @@ namespace Cookware
             services.AddTransient<IProducts, ProductService>();
             services.AddTransient<IBasketItem, BasketItemService>();
             services.AddScoped<IEmailSender, EmailSender>();
+            services.AddTransient<IOrder, OrderService>();
 
         }
 
