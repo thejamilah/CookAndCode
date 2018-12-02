@@ -10,6 +10,8 @@ using System;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Cookware.Data;
+using System.Linq;
 
 namespace Cookware.Controllers
 {
@@ -18,12 +20,14 @@ namespace Cookware.Controllers
     {
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> _signInManager;
+        private ApplicationDbContext _context;
         private IEmailSender _email;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailSender email)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ApplicationDbContext context, IEmailSender email)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _context = context;
             _email = email;
         }
 
@@ -47,6 +51,8 @@ namespace Cookware.Controllers
         {
             if (ModelState.IsValid)
             {
+                CheckUserRolesExist();
+
                 // start the registration process
                 ApplicationUser user = new ApplicationUser()
                 {
@@ -80,6 +86,13 @@ namespace Cookware.Controllers
                         languageClaim
                     };
 
+                    if (registervm.Email.Contains("@codefellows.com"))
+                    {
+                        await _userManager.AddToRoleAsync(user, UserRoles.Admin);
+                    }
+
+                    await _userManager.AddToRoleAsync(user, UserRoles.Member);
+
                     await _userManager.AddClaimsAsync(user, myclaims);
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
@@ -87,6 +100,13 @@ namespace Cookware.Controllers
 
                     //SendGrid Email
                     await _email.SendEmailAsync(registervm.Email, "Registration Successful", $"<h1>Welcome, {registervm.FirstName}!</h1>  <p>Thank you for registering to Cook&&Code.  You will now receive exclusive deals on cool stuff!</p>");
+
+                    var roles = await _userManager.GetRolesAsync(user);
+
+                    if (roles.Contains("Administrator"))
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -147,6 +167,24 @@ namespace Cookware.Controllers
             await _signInManager.SignOutAsync();
 
             return RedirectToAction("Index", "Home");
+        }
+
+        public void CheckUserRolesExist()
+        {
+            if (!_context.Roles.Any())
+            {
+                List<IdentityRole> Roles = new List<IdentityRole>
+                {
+                    new IdentityRole{Name = UserRoles.Admin, NormalizedName=UserRoles.Admin.ToString(), ConcurrencyStamp = Guid.NewGuid().ToString()},
+                    new IdentityRole{Name = UserRoles.Member, NormalizedName=UserRoles.Member.ToString(), ConcurrencyStamp = Guid.NewGuid().ToString()},
+                };
+
+                foreach (var role in Roles)
+                {
+                    _context.Roles.Add(role);
+                    _context.SaveChanges();
+                }
+            }
         }
 
     }
