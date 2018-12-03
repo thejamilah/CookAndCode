@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Cookware.Controllers
+namespace Cookware.Pages.Admin
 {
-    public class AdminController : Controller
+    public class DeleteProductsModel : PageModel
     {
-        public IActionResult Index()
+        public void OnGet()
         {
-            return View();
+
         }
     }
 }
