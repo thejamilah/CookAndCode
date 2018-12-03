@@ -65,7 +65,7 @@ namespace Cookware.Controllers
                 };
 
                 var result = await _userManager.CreateAsync(user, registervm.Password);
-                
+
                 if (result.Succeeded)
                 {
                     Claim fullNameClaim = new Claim("FullName", $"{user.FirstName} {user.LastName}");
@@ -121,7 +121,7 @@ namespace Cookware.Controllers
             }
             return View(registervm);
         }
-        
+
         /// <summary>
         /// Displays Login Page
         /// </summary>
@@ -146,6 +146,13 @@ namespace Cookware.Controllers
 
                 if (result.Succeeded)
                 {
+                    var user = await _userManager.FindByEmailAsync(lvm.Email);
+
+                    if (await _userManager.IsInRoleAsync(user, UserRoles.Admin))
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
