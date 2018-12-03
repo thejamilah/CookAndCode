@@ -37,6 +37,7 @@ namespace Cookware.Controllers
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
             var ID = user.Id;
+            
             var basketItem = _context.BasketItems.SingleOrDefault(
                 b => b.ProductID == ProductID && b.UserID == ID);
             if (basketItem == null)
