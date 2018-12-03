@@ -52,6 +52,7 @@ namespace Cookware
                 options.AddPolicy("MustBe21ToPurchase", policy => policy.Requirements.Add(new MinAgeRequirement(21)));
                 options.AddPolicy("FavoriteLanguage", policy => policy.RequireClaim("FavoriteLanguage"));
                 options.AddPolicy("SchoolEmail", policy => policy.Requirements.Add(new SchoolEmailHandler()));
+                options.AddPolicy("AdminAccess", policy => policy.RequireRole(UserRoles.Admin));
             });
 
             services.AddTransient<IProducts, ProductService>();
