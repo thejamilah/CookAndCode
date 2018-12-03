@@ -19,14 +19,16 @@ namespace Cookware.Controllers
         private UserManager<ApplicationUser> _userManager;
         private CookwareDBContext _context;
         private readonly IOrder _order;
-        private IEmailSender _email;
+        private readonly IEmailSender _email;
+        private readonly IBasketItem _basketItem;
 
-        public CheckoutController(UserManager<ApplicationUser> userManager, CookwareDBContext context, IOrder order, IEmailSender email)
+        public CheckoutController(UserManager<ApplicationUser> userManager, CookwareDBContext context, IOrder order, IEmailSender email, IBasketItem basketItem)
         {
             _userManager = userManager;
             _context = context;
             _email = email;
             _order = order;
+            _basketItem = basketItem;
         }
 
         /// <summary>
@@ -58,6 +60,7 @@ namespace Cookware.Controllers
             foreach(var item in shoppingCart)
             {
                 total += item.Product.Price;
+                
             }
 
             //create new order item
@@ -70,6 +73,13 @@ namespace Cookware.Controllers
             };
 
             await _order.CreateOrder(order);
+
+            foreach( var item in shoppingCart)
+            {
+                item.OrderID = order.ID;
+                await _basketItem.UpdateBasketItem(item);
+            }
+
 
             return RedirectToAction("Receipt", "Checkout");
         }
