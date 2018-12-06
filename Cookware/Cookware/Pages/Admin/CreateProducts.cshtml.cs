@@ -20,11 +20,19 @@ namespace Cookware.Pages.Admin
         [BindProperty]
         public Cookware.Models.Product Product { get; set; }
 
+        /// <summary>
+        /// Displays page with form to create new product
+        /// </summary>
+        /// <returns></returns>
         public IActionResult OnGet()
         {
             return Page();
         }
 
+        /// <summary>
+        /// creates new product
+        /// </summary>
+        /// <returns>index page displaying all products</returns>
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)

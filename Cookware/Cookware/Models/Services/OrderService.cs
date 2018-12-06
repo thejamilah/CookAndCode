@@ -18,6 +18,12 @@ namespace Cookware.Models.Services
             _context = context;
             _userManager = userManager;
         }
+
+        /// <summary>
+        /// Creates new order object
+        /// </summary>
+        /// <param name="Order">New Order to be added to DB</param>
+        /// <returns>Task for order item</returns>
         public async Task CreateOrder(Order Order)
         {
             _context.Orders.Add(Order);

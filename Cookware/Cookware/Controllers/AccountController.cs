@@ -176,6 +176,9 @@ namespace Cookware.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        /// <summary>
+        /// Method checks if user has any roles associated with it
+        /// </summary>
         public void CheckUserRolesExist()
         {
             if (!_context.Roles.Any())

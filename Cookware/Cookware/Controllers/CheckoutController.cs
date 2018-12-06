@@ -41,6 +41,11 @@ namespace Cookware.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Checkout page which accepts credit card information
+        /// </summary>
+        /// <param name="CreditCard">Test credit card number</param>
+        /// <returns>Receipt Page</returns>
         [HttpPost]
         public async Task<IActionResult> Checkout(string CreditCard)
         {
@@ -85,9 +90,9 @@ namespace Cookware.Controllers
         }
         
         /// <summary>
-        /// Sends email upon checkout for completion of order
+        /// Sends email upon checkout for completion of order and redirects to receipt page
         /// </summary>
-        /// <returns></returns>
+        /// <returns> shopping cart receipt page</returns>
         public async Task<IActionResult> Receipt()
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
