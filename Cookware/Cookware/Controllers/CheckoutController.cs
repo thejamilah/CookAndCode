@@ -74,6 +74,10 @@ namespace Cookware.Controllers
             return RedirectToAction("Receipt", "Checkout");
         }
         
+        /// <summary>
+        /// Sends email upon checkout for completion of order
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Receipt()
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);

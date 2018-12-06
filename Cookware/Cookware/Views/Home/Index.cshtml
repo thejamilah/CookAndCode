@@ -25,10 +25,6 @@
                 {
                     <a class="link" href="Product/">shop</a> <a class="link" href="CSharp/">For CSharp Lovers Only</a>
                 }
-                @if ((await AuthorizationService.AuthorizeAsync(User, "MustBe21ToPurchase")).Succeeded)
-                {
-                    <a class="link" href="Over21/">Over 21</a>
-                }
 
                 @if ((await AuthorizationService.AuthorizeAsync(User, "SchoolEmail")).Succeeded)
                 {
