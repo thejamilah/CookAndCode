@@ -37,7 +37,9 @@ namespace Cookware.Controllers
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
             var ID = user.Id;
-            
+
+            var product = await _products.GetProduct(ProductID);
+
             var basketItem = _context.BasketItems.SingleOrDefault(
                 b => b.ProductID == ProductID && b.UserID == ID);
             if (basketItem == null)
@@ -59,6 +61,11 @@ namespace Cookware.Controllers
             }
 
             _context.SaveChanges();
+
+            if(product.LanguageIsCSharp == true)
+            {
+                return RedirectToAction("Index", "CSharp");
+            }
 
             return RedirectToAction("Index", "Product");
         }
