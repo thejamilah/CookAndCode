@@ -37,10 +37,11 @@ namespace Cookware.Models.Services
         /// <returns>list of products</returns>
         public async Task<IEnumerable<Order>> GetTopFiveOrders(string userID)
         {
-            return await _context.Orders.Where(x => x.UserID == userID).Take(5).ToListAsync();
+            var orders = await _context.Orders.Include(bi => bi.BasketItems).ThenInclude(p => p.Product).Where(x => x.UserID == userID).Take(5).ToListAsync();
+            return orders;
         }
-
-        public async Task<Order> GetLastOrder()
+        
+    public async Task<Order> GetLastOrder()
         {
             return await _context.Orders.OrderByDescending(order => order.OrderDate).FirstOrDefaultAsync();
         }
