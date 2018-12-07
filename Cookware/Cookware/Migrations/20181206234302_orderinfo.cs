@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Cookware.Migrations
 {
-    public partial class newitems : Migration
+    public partial class orderinfo : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,6 +14,8 @@ namespace Cookware.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
                     UserID = table.Column<string>(nullable: true),
                     OrderDate = table.Column<DateTime>(nullable: false),
                     CreditCard = table.Column<int>(nullable: false),
@@ -72,8 +74,8 @@ namespace Cookware.Migrations
 
             migrationBuilder.InsertData(
                 table: "Orders",
-                columns: new[] { "ID", "CreditCard", "OrderDate", "Total", "UserID" },
-                values: new object[] { 1, 0, new DateTime(2018, 11, 29, 11, 32, 25, 200, DateTimeKind.Local), 0.00m, "default" });
+                columns: new[] { "ID", "CreditCard", "FirstName", "LastName", "OrderDate", "Total", "UserID" },
+                values: new object[] { 1, 0, null, null, new DateTime(2018, 12, 6, 15, 43, 1, 504, DateTimeKind.Local), 0.00m, "default" });
 
             migrationBuilder.InsertData(
                 table: "Products",

@@ -47,7 +47,7 @@ namespace Cookware.Controllers
         /// <param name="CreditCard">Test credit card number</param>
         /// <returns>Receipt Page</returns>
         [HttpPost]
-        public async Task<IActionResult> Checkout(string CreditCard)
+        public async Task<IActionResult> Checkout(string CreditCard, string FirstName, string LastName)
         {
             //get credit card number, last four digits
             string ccNumber = CreditCard;
@@ -72,6 +72,8 @@ namespace Cookware.Controllers
             Order order = new Order()
             {
                 UserID = ID,
+                FirstName = FirstName,
+                LastName = LastName,
                 OrderDate = DateTime.Now,
                 CreditCard = Convert.ToInt32(lastFourDigits),
                 Total = total
