@@ -20,6 +20,11 @@ namespace Cookware.Pages.Admin
         [BindProperty]
         public Cookware.Models.Product Product { get; set; }
 
+        /// <summary>
+        /// Grabs Product by ID to display
+        /// </summary>
+        /// <param name="ID">Product ID</param>
+        /// <returns>display page for delete</returns>
         public async Task<IActionResult> OnGet(int? ID)
         {
             if (ID == null)
@@ -37,6 +42,11 @@ namespace Cookware.Pages.Admin
             return Page();
         }
 
+        /// <summary>
+        /// Deletes the product related to the id passed in
+        /// </summary>
+        /// <param name="ID">Product ID</param>
+        /// <returns>Index page displaying all products</returns>
         public async Task<IActionResult> OnPost(int ID)
         {
             await _product.DeleteProduct(ID);

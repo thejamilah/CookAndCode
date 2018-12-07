@@ -9,5 +9,10 @@ namespace Cookware.Models.Interfaces
     {
         //Create
         Task CreateOrder(Order Order);
+
+        //Read
+        Task<IEnumerable<Order>> GetTopFiveOrders(string userID);
+
+        Task<Order> GetLastOrder();
     }
 }

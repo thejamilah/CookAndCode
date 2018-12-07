@@ -41,6 +41,11 @@ namespace Cookware.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Checkout page which accepts credit card information
+        /// </summary>
+        /// <param name="CreditCard">Test credit card number</param>
+        /// <returns>Receipt Page</returns>
         [HttpPost]
         public async Task<IActionResult> Checkout(string CreditCard)
         {
@@ -53,7 +58,7 @@ namespace Cookware.Controllers
             var ID = user.Id;
             
             //get basket items
-            var shoppingCart = await _context.BasketItems.Where(x => x.UserID == ID).Include(product => product.Product).ToListAsync();
+            var shoppingCart = await _context.BasketItems.Where(x => x.UserID == ID && x.OrderID == 1).Include(product => product.Product).ToListAsync();
 
             //get total
             decimal total = 0;
@@ -85,14 +90,17 @@ namespace Cookware.Controllers
         }
         
         /// <summary>
-        /// Sends email upon checkout for completion of order
+        /// Sends email upon checkout for completion of order and redirects to receipt page
         /// </summary>
-        /// <returns></returns>
+        /// <returns> shopping cart receipt page</returns>
         public async Task<IActionResult> Receipt()
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
             var ID = user.Id;
-            var shoppingCart = await _context.BasketItems.Where(x => x.UserID == ID).Include(product => product.Product).ToListAsync();
+
+            var order = await _order.GetLastOrder();
+
+            var shoppingCart = await _context.BasketItems.Where(x => x.UserID == ID && x.OrderID == order.ID).Include(product => product.Product).ToListAsync();
 
             await _email.SendEmailAsync(user.Email,"Order Completed", $"<h1>Welcome, {user.FirstName}!</h1>  <p>Thank you for shopping with Cook&&Code.  Your items are on the way!</p>");
 

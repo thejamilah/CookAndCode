@@ -21,6 +21,11 @@ namespace Cookware.Pages.Admin
         [BindProperty]
         public Cookware.Models.Product Product { get; set; }
 
+        /// <summary>
+        /// Grabs Product to display for edit
+        /// </summary>
+        /// <param name="ID">Product id</param>
+        /// <returns>View page for editing product</returns>
         public async Task<IActionResult> OnGet(int? ID)
         {
             if (ID == null)
@@ -38,6 +43,10 @@ namespace Cookware.Pages.Admin
             return Page();
         }
 
+        /// <summary>
+        /// Updates the product information
+        /// </summary>
+        /// <returns>Index page displaying all products</returns>
         public async Task<IActionResult> OnPost()
         {
             if (!ModelState.IsValid)
