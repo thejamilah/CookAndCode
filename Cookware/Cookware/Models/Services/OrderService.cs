@@ -40,8 +40,12 @@ namespace Cookware.Models.Services
             var orders = await _context.Orders.Include(bi => bi.BasketItems).ThenInclude(p => p.Product).Where(x => x.UserID == userID).Take(5).ToListAsync();
             return orders;
         }
-        
-    public async Task<Order> GetLastOrder()
+
+        /// <summary>
+        /// Gets the last order that was added to the db
+        /// </summary>
+        /// <returns>last order in db for user</returns>
+        public async Task<Order> GetLastOrder()
         {
             return await _context.Orders.OrderByDescending(order => order.OrderDate).FirstOrDefaultAsync();
         }
