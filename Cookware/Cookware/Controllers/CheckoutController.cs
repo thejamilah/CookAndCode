@@ -58,7 +58,7 @@ namespace Cookware.Controllers
             var ID = user.Id;
             
             //get basket items
-            var shoppingCart = await _context.BasketItems.Where(x => x.UserID == ID).Include(product => product.Product).ToListAsync();
+            var shoppingCart = await _context.BasketItems.Where(x => x.UserID == ID && x.OrderID == 1).Include(product => product.Product).ToListAsync();
 
             //get total
             decimal total = 0;
@@ -97,7 +97,10 @@ namespace Cookware.Controllers
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
             var ID = user.Id;
-            var shoppingCart = await _context.BasketItems.Where(x => x.UserID == ID).Include(product => product.Product).ToListAsync();
+
+            var order = await _order.GetLastOrder();
+
+            var shoppingCart = await _context.BasketItems.Where(x => x.UserID == ID && x.OrderID == order.ID).Include(product => product.Product).ToListAsync();
 
             await _email.SendEmailAsync(user.Email,"Order Completed", $"<h1>Welcome, {user.FirstName}!</h1>  <p>Thank you for shopping with Cook&&Code.  Your items are on the way!</p>");
 

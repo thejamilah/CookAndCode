@@ -1,0 +1,23 @@
+﻿@page
+@model Cookware.Pages.Admin.UserProfileModel
+@{
+    ViewData["Title"] = "UserProfile";
+}
+
+<h2>UserProfile</h2>
+
+@foreach (var item in Model.Orders)
+{
+    <div>
+        <p>@item.OrderDate</p>
+        <p>@item.Total</p>
+        <p>@item.CreditCard</p>
+        <p>Items:</p>
+        <ul>
+            @foreach (var basketitem in item.BasketItems)
+            {
+            <li>@basketitem.Product.Name : Qty. @basketitem.Quantity</li>
+            }
+        </ul>
+    </div>
+}

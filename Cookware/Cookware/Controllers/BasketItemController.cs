@@ -41,7 +41,8 @@ namespace Cookware.Controllers
             var product = await _products.GetProduct(ProductID);
 
             var basketItem = _context.BasketItems.SingleOrDefault(
-                b => b.ProductID == ProductID && b.UserID == ID);
+                b => b.ProductID == ProductID && b.UserID == ID && b.OrderID == 1);
+
             if (basketItem == null)
             {
                 BasketItem newItem = new BasketItem()

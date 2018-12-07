@@ -1,6 +1,7 @@
 ﻿using Cookware.Data;
 using Cookware.Models.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,20 @@ namespace Cookware.Models.Services
         {
             _context.Orders.Add(Order);
             await _context.SaveChangesAsync();
+        }
+
+        /// <summary>
+        /// Get list of top 5 orders in DB for user
+        /// </summary>
+        /// <returns>list of products</returns>
+        public async Task<IEnumerable<Order>> GetTopFiveOrders(string userID)
+        {
+            return await _context.Orders.Where(x => x.UserID == userID).Take(5).ToListAsync();
+        }
+
+        public async Task<Order> GetLastOrder()
+        {
+            return await _context.Orders.OrderByDescending(order => order.OrderDate).FirstOrDefaultAsync();
         }
     }
 }
