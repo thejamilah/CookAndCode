@@ -8,6 +8,7 @@ using Cookware.Models.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace Cookware.Pages.Admin
 {
@@ -27,9 +28,16 @@ namespace Cookware.Pages.Admin
         }
 
 
-        public void OnGet()
+        public async Task<IActionResult> OnGet(string uID)
         {
+            List<Order> orders = await _context.Orders.OrderByDescending
+                (i => i.ID)
+                .Take(10)
+                .ToListAsync();
+
+            return Page();
 
         }
+
     }
 }

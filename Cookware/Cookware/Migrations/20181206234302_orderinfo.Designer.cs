@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cookware.Migrations
 {
     [DbContext(typeof(CookwareDBContext))]
-    [Migration("20181129193225_newitems")]
-    partial class newitems
+    [Migration("20181206234302_orderinfo")]
+    partial class orderinfo
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -52,6 +52,10 @@ namespace Cookware.Migrations
 
                     b.Property<int>("CreditCard");
 
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
                     b.Property<DateTime>("OrderDate");
 
                     b.Property<decimal>("Total");
@@ -63,7 +67,7 @@ namespace Cookware.Migrations
                     b.ToTable("Orders");
 
                     b.HasData(
-                        new { ID = 1, CreditCard = 0, OrderDate = new DateTime(2018, 11, 29, 11, 32, 25, 200, DateTimeKind.Local), Total = 0.00m, UserID = "default" }
+                        new { ID = 1, CreditCard = 0, OrderDate = new DateTime(2018, 12, 6, 15, 43, 1, 504, DateTimeKind.Local), Total = 0.00m, UserID = "default" }
                     );
                 });
 
