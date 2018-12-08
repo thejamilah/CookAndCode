@@ -6,3 +6,10 @@
 
 <h2>RecentOrders</h2>
 
+@foreach (var item in Model.Orders)
+{
+    <p>@item.FirstName</p>
+    <p>@item.LastName</p>
+    <p>@item.OrderDate</p>
+    <p>@item.Total</p>
+}

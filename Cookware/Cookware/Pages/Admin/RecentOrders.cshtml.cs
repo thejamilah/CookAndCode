@@ -19,6 +19,13 @@ namespace Cookware.Pages.Admin
         private readonly IProducts _products;
         private readonly IBasketItem _basketItem;
 
+        [BindProperty]
+        public List<Order> Orders { get; set; } = new List<Order>();
+
+        [BindProperty]
+        public string UserData { get; set; }
+
+
         public RecentOrdersModel(UserManager<ApplicationUser> userManager, IProducts products, IBasketItem basketItem, CookwareDBContext context)
         {
             _userManager = userManager;
@@ -30,7 +37,7 @@ namespace Cookware.Pages.Admin
 
         public async Task<IActionResult> OnGet(string uID)
         {
-            List<Order> orders = await _context.Orders.OrderByDescending
+            Orders = await _context.Orders.OrderByDescending
                 (i => i.ID)
                 .Take(10)
                 .ToListAsync();
