@@ -196,6 +196,5 @@ namespace Cookware.Controllers
                 }
             }
         }
-
     }
 }
