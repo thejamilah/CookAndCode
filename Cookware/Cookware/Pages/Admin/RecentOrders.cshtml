@@ -8,8 +8,8 @@
 
 @foreach (var item in Model.Orders)
 {
-    <p>@item.FirstName</p>
-    <p>@item.LastName</p>
-    <p>@item.OrderDate</p>
-    <p>@item.Total</p>
+    <p>Customer Name: @item.FirstName @item.LastName</p>
+    <p>Order Date: @item.OrderDate</p>
+    <p>Order Total: $@item.Total USD</p>
 }
+

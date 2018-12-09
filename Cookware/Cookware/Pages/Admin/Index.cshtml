@@ -4,23 +4,29 @@
     ViewData["Title"] = "Admin Index";
 }
 
-<h2>Admin Dashboard Home</h2>
 
-<a class="link" href="Product/">View All Products</a>
+<form action="Admin/UserProfile" method="get">
+    <button type="submit">View Profile</button>
+</form>
 
-<a class="link" href="Admin/CreateProducts">Add New Product</a>
+<form action="Product/" method="get">
+<button type="submit">View All Products</button>
+</form>
 
-<a class="link" href="Admin/UserProfile">View Profile</a>
-
+<form action="Admin/CreateProducts" method="get">
+    <button type="submit">Add New Product</button>
+</form>
 
 <form action="/Admin/DeleteProducts" method="get">
     <input type="hidden" name="ID" value=22 />
     <button type="submit">Delete</button>
 </form>
 
-
 <form action="/Admin/EditProducts" method="get">
     <input type="hidden" name="ID" value=1022 />
     <button type="submit">Edit</button>
 </form>
-<a class="link" href="/Admin/RecentOrders">Recent Orders</a>
+
+<form action="/Admin/RecentOrders" method="get">
+    <button type="submit">Recent Orders</button>
+</form>
