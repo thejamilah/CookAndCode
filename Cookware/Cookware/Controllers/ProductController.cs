@@ -40,6 +40,7 @@ namespace Cookware.Controllers
         /// </summary>
         /// <param name="id">Product ID</param>
         /// <returns>Product Detail</returns>
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Details(int? productID)
         {

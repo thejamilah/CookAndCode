@@ -4,29 +4,36 @@
     ViewData["Title"] = "Admin Index";
 }
 
+@{
+    Layout = "_Layout_Admin";
+}
 
-<form action="Admin/UserProfile" method="get">
-    <button type="submit">View Profile</button>
-</form>
+<div class="wrapper">
+    <div class="logreg_form">
+        <form action="Admin/UserProfile" method="get">
+            <button type="submit">View Profile</button>
+        </form>
 
-<form action="Product/" method="get">
-<button type="submit">View All Products</button>
-</form>
+        <form action="Product/" method="get">
+            <button type="submit">View All Products</button>
+        </form>
 
-<form action="Admin/CreateProducts" method="get">
-    <button type="submit">Add New Product</button>
-</form>
+        <form action="Admin/CreateProducts" method="get">
+            <button type="submit">Add New Product</button>
+        </form>
 
-<form action="/Admin/DeleteProducts" method="get">
-    <input type="hidden" name="ID" value=22 />
-    <button type="submit">Delete</button>
-</form>
+        <form action="/Admin/DeleteProducts" method="get">
+            <input type="hidden" name="ID" value=22 />
+            <button type="submit">Delete</button>
+        </form>
 
-<form action="/Admin/EditProducts" method="get">
-    <input type="hidden" name="ID" value=1022 />
-    <button type="submit">Edit</button>
-</form>
+        <form action="/Admin/EditProducts" method="get">
+            <input type="hidden" name="ID" value=1022 />
+            <button type="submit">Edit</button>
+        </form>
 
-<form action="/Admin/RecentOrders" method="get">
-    <button type="submit">Recent Orders</button>
-</form>
+        <form action="/Admin/RecentOrders" method="get">
+            <button type="submit">Recent Orders</button>
+        </form>
+    </div>
+</div>

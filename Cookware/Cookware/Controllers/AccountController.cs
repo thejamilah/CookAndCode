@@ -15,7 +15,7 @@ using System.Linq;
 
 namespace Cookware.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     public class AccountController : Controller
     {
         private UserManager<ApplicationUser> _userManager;
@@ -35,6 +35,7 @@ namespace Cookware.Controllers
         /// Registration page
         /// </summary>
         /// <returns>Display/direct to registration</returns>
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Register()
         {
@@ -46,6 +47,7 @@ namespace Cookware.Controllers
         /// </summary>
         /// <param name="registervm">Register View Model parameters</param>
         /// <returns>Complted profile</returns>
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel registervm)
         {
@@ -126,6 +128,7 @@ namespace Cookware.Controllers
         /// Displays Login Page
         /// </summary>
         /// <returns>Login view</returns>
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Login()
         {
@@ -137,6 +140,7 @@ namespace Cookware.Controllers
         /// </summary>
         /// <param name="lvm">User login credentials</param>
         /// <returns>Confirmed login or invalid username/password</returns>
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel lvm)
         {
@@ -179,6 +183,7 @@ namespace Cookware.Controllers
         /// <summary>
         /// Method checks if user has any roles associated with it
         /// </summary>
+        [AllowAnonymous]
         public void CheckUserRolesExist()
         {
             if (!_context.Roles.Any())
