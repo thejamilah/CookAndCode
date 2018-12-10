@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cookware.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Member")]
     public class BasketItemController : Controller
     {
         private UserManager<ApplicationUser> _userManager;
@@ -135,5 +135,7 @@ namespace Cookware.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+
     }
 }
