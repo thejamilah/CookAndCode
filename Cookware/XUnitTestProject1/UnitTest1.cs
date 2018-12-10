@@ -92,9 +92,60 @@ namespace XUnitTestProject1
                 context.Products.Remove(product);
                 context.SaveChanges();
 
-                var deletedHotel = await context.Products.FirstOrDefaultAsync(x => x.Name == product.Name);
+                var deletedProduct = await context.Products.FirstOrDefaultAsync(x => x.Name == product.Name);
 
-                Assert.True(deletedHotel == null);
+                Assert.True(deletedProduct == null);
+            }
+        }
+
+        /// <summary>
+        /// test can create, read, update, and delete basketItem in db
+        /// </summary>
+        [Fact]
+        public async void CrudBasketItemInDB()
+        {
+            //Arrange
+            //setup our DB
+            //set values
+
+            DbContextOptions<CookwareDBContext> options =
+            new DbContextOptionsBuilder<CookwareDBContext>().UseInMemoryDatabase("DbCanSave").Options;
+
+            //Act
+            //creating a variable that "gets" the name
+            using (CookwareDBContext context = new CookwareDBContext(options))
+            {
+                BasketItem basket = new BasketItem();
+                basket.ProductID = 1;
+                basket.UserID = "1";
+                basket.Quantity = 3;
+
+                ////Act
+
+                context.BasketItems.Add(basket);
+                context.SaveChanges();
+
+                var basketQty = await context.BasketItems.FirstOrDefaultAsync(x => x.UserID == basket.UserID);
+
+                //Assert
+                Assert.Equal(3, basketQty.Quantity);
+
+                //UPDATE
+                basket.Quantity = 7;
+                context.BasketItems.Update(basket);
+                context.SaveChanges();
+
+                var updatedBasket = await context.BasketItems.FirstOrDefaultAsync(x => x.Quantity == basket.Quantity);
+
+                Assert.Equal(7, updatedBasket.Quantity);
+
+                //DELETE
+                context.BasketItems.Remove(basket);
+                context.SaveChanges();
+
+                var deletedBasket = await context.BasketItems.FirstOrDefaultAsync(x => x.Quantity == basket.Quantity);
+
+                Assert.True(deletedBasket == null);
             }
         }
     }
