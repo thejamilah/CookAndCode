@@ -4,18 +4,25 @@
     ViewData["Title"] = "DeleteProducts";
 }
 
-<h2>Are you sure you want to remove this item?</h2>
+@{
+    Layout = "_Layout";
+}
 
-<ul>
-    <li>@Model.Product.Name</li>
-    <li>@Model.Product.Price</li>
-    <li>@Model.Product.Sku</li>
-    <li>@Model.Product.Description</li>
-    <li><img src="@Model.Product.Image" alt="Product img" /></li>
-</ul>
 
-<form method="post">
-    <input type="hidden" asp-for="@Model.Product.ID" />
-    <input type="submit" value="Delete" class="btn btn-default" /> |
-    <a asp-action="./Index">Back to List</a>
-</form>
+    <h2>Are you sure you want to remove this item?</h2>
+
+<div class="deck">
+    <ul>
+        <li>@Model.Product.Name</li>
+        <li>@Model.Product.Price</li>
+        <li>@Model.Product.Sku</li>
+        <li>@Model.Product.Description</li>
+        <li><img src="@Model.Product.Image" alt="Product img" /></li>
+    </ul>
+
+    <form method="post">
+        <input type="hidden" asp-for="@Model.Product.ID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="./Index">Back to List</a>
+    </form>
+</div>

@@ -4,28 +4,34 @@
     ViewData["Title"] = "EditProducts";
 }
 
+@{
+    Layout = "_Layout";
+}
+
 <h2>Edit Product</h2>
 
-<form method="post">
-    <input type="hidden" asp-for="Product.ID" />
+<div class="deck">
+    <form method="post">
+        <input type="hidden" asp-for="Product.ID" />
 
-    <label asp-for="Product.Sku">Sku</label>
-    <input asp-for="Product.Sku" />
+        <label asp-for="Product.Sku">Sku</label>
+        <input asp-for="Product.Sku" />
 
-    <label asp-for="Product.Name">Name</label>
-    <input asp-for="Product.Name" />
+        <label asp-for="Product.Name">Name</label>
+        <input asp-for="Product.Name" />
 
-    <label asp-for="Product.Price">Price</label>
-    <input asp-for="Product.Price" />
+        <label asp-for="Product.Price">Price</label>
+        <input asp-for="Product.Price" />
 
-    <label asp-for="Product.Description">Description</label>
-    <input asp-for="Product.Description" />
+        <label asp-for="Product.Description">Description</label>
+        <input asp-for="Product.Description" />
 
-    <label asp-for="Product.Image">Image</label>
-    <input asp-for="Product.Image" />
+        <label asp-for="Product.Image">Image</label>
+        <input asp-for="Product.Image" />
 
-    <label asp-for="Product.LanguageIsCSharp">LanguageIsCSharp</label>
-    <input asp-for="Product.LanguageIsCSharp" />
+        <label asp-for="Product.LanguageIsCSharp">LanguageIsCSharp</label>
+        <input asp-for="Product.LanguageIsCSharp" />
 
-    <input type="submit" value="Update Product" />
-</form>
+        <input type="submit" value="Update Product" />
+    </form>
+</div>

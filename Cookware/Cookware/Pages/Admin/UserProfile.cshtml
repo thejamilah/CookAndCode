@@ -4,20 +4,28 @@
     ViewData["Title"] = "UserProfile";
 }
 
+@{
+    Layout = "_Layout";
+}
+
 <h2>UserProfile</h2>
 
-@foreach (var item in Model.Orders)
-{
-    <div>
-        <p>@item.OrderDate</p>
-        <p>@item.Total</p>
-        <p>@item.CreditCard</p>
-        <p>Items:</p>
-        <ul>
-            @foreach (var basketitem in item.BasketItems)
-            {
-            <li>@basketitem.Product.Name : Qty. @basketitem.Quantity</li>
-            }
-        </ul>
-    </div>
-}
+<h3>Last 5 Orders: </h3>
+
+<div class="deck">
+    @foreach (var item in Model.Orders)
+    {
+        <div class="card">
+            <p>Order Date: @item.OrderDate</p>
+            <p>Order Total: $@item.Total USD</p>
+            <p>Payment: Card Ending in '@item.CreditCard'</p>
+            <p>Items:</p>
+            <ul>
+                @foreach (var basketitem in item.BasketItems)
+                {
+                    <li>@basketitem.Product.Name : Qty. @basketitem.Quantity</li>
+                }
+            </ul>
+        </div>
+    }
+</div>
