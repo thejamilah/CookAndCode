@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using Cookware.Data;
 using Cookware.Models;
 using Cookware.Models.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cookware.Controllers
 {
+    [Authorize(Roles = "Member")]
     public class BasketItemController : Controller
     {
         private UserManager<ApplicationUser> _userManager;

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Cookware.Controllers
 {   
 
-    [AllowAnonymous]
+    [Authorize(Roles = "Admin")]
     public class ProductController : Controller
     {
         private UserManager<ApplicationUser> _userManager;
@@ -25,7 +25,8 @@ namespace Cookware.Controllers
             _products = products;
             _basketItem = basketItem;
         }
-        
+
+        [AllowAnonymous]
         /// <summary>
         /// index shows all products
         /// </summary>
