@@ -148,5 +148,58 @@ namespace XUnitTestProject1
                 Assert.True(deletedBasket == null);
             }
         }
+
+        /// <summary>
+        /// test can create, read, update, and delete Order in db
+        /// </summary>
+        [Fact]
+        public async void CrudOrderInDB()
+        {
+            //Arrange
+            //setup our DB
+            //set values
+
+            DbContextOptions<CookwareDBContext> options =
+            new DbContextOptionsBuilder<CookwareDBContext>().UseInMemoryDatabase("DbCanSave").Options;
+
+            //Act
+            //creating a variable that "gets" the name
+            using (CookwareDBContext context = new CookwareDBContext(options))
+            {
+                Order order = new Order();
+                order.FirstName = "Test";
+                order.LastName = "Subject";
+                order.OrderDate = DateTime.Now;
+                order.Total = 500.00M;
+                order.UserID = "1";
+
+                ////Act
+
+                context.Orders.Add(order);
+                context.SaveChanges();
+
+                var orderName = await context.Orders.FirstOrDefaultAsync(x => x.UserID == order.UserID);
+
+                //Assert
+                Assert.Equal("Test", orderName.FirstName);
+
+                //UPDATE
+                order.FirstName = "Update";
+                context.Orders.Update(order);
+                context.SaveChanges();
+
+                var updatedOrder = await context.Orders.FirstOrDefaultAsync(x => x.FirstName == order.FirstName);
+
+                Assert.Equal("Update", updatedOrder.FirstName);
+
+                //DELETE
+                context.Orders.Remove(order);
+                context.SaveChanges();
+
+                var deletedBasket = await context.Orders.FirstOrDefaultAsync(x => x.FirstName == order.FirstName);
+
+                Assert.True(deletedBasket == null);
+            }
+        }
     }
 }
