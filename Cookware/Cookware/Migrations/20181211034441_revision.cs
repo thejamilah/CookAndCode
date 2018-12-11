@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Cookware.Migrations
 {
-    public partial class orderinfo : Migration
+    public partial class revision : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -75,7 +75,7 @@ namespace Cookware.Migrations
             migrationBuilder.InsertData(
                 table: "Orders",
                 columns: new[] { "ID", "CreditCard", "FirstName", "LastName", "OrderDate", "Total", "UserID" },
-                values: new object[] { 1, 0, null, null, new DateTime(2018, 12, 6, 15, 43, 1, 504, DateTimeKind.Local), 0.00m, "default" });
+                values: new object[] { 1, 0, null, null, new DateTime(2018, 12, 10, 19, 44, 41, 37, DateTimeKind.Local), 0.00m, "default" });
 
             migrationBuilder.InsertData(
                 table: "Products",

@@ -10,12 +10,12 @@
 <head>
     <title>cook && code admin dash</title>
     <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
-    <link href="~/StyleSheet.css" rel="stylesheet" />
+    <link href="~/AdminStyleSheet.css" rel="stylesheet" />
 </head>
 <body>
     <div class="nav">
         <header class="navhead">
-            <a class="navlink" href="@Url.Action("Index", "Home")"><h1>cook && code admin dash</h1></a>
+            <a class="navlink" href="@Url.Action("Index", "Admin")"><h1>cook && code admin</h1></a>
         </header>
         <ul class="navbar">
             @if (SignInManager.IsSignedIn(User))

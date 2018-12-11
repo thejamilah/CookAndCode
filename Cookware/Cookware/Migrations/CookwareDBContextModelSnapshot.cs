@@ -65,7 +65,7 @@ namespace Cookware.Migrations
                     b.ToTable("Orders");
 
                     b.HasData(
-                        new { ID = 1, CreditCard = 0, OrderDate = new DateTime(2018, 12, 6, 15, 43, 1, 504, DateTimeKind.Local), Total = 0.00m, UserID = "default" }
+                        new { ID = 1, CreditCard = 0, OrderDate = new DateTime(2018, 12, 10, 19, 44, 41, 37, DateTimeKind.Local), Total = 0.00m, UserID = "default" }
                     );
                 });
 

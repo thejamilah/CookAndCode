@@ -128,7 +128,8 @@ namespace Cookware.Controllers
                 ID = ID,
                 ProductID = ProductID,
                 Quantity = Quantity,
-                UserID = _userManager.GetUserId(User)
+                UserID = _userManager.GetUserId(User),
+                OrderID = 1
             };
 
             await _basketItem.UpdateBasketItem(updateItem);
