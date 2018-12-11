@@ -8,33 +8,44 @@
     Layout = "_Layout_Admin";
 }
 
-<div class="card">
-    <h2>ADMIN MENU</h2>
-    <div class="logreg_form">
-        <form action="Admin/UserProfile" method="get">
-            <button type="submit">View Profile</button>
-        </form>
+<div class="wrapper">
+    <div class="deck">
+        <div class="logreg_form card">
+            <form action="Admin/UserProfile" method="get">
+                <button type="submit">View Profile</button>
+            </form>
 
-        <form action="Product/" method="get">
-            <button type="submit">View All Products</button>
-        </form>
+            <form action="Product/" method="get">
+                <button type="submit">View All Products</button>
+            </form>
 
-        <form action="Admin/CreateProducts" method="get">
-            <button type="submit">Add New Product</button>
-        </form>
+            <form action="Admin/CreateProducts" method="get">
+                <button type="submit">Add New Product</button>
+            </form>
 
-        <form action="/Admin/DeleteProducts" method="get">
-            <input type="hidden" name="ID" value=22 />
-            <button type="submit">Delete</button>
-        </form>
+            <form action="/Admin/RecentOrders" method="get">
+                <button type="submit">Recent Orders</button>
+            </form>
+        </div>
 
-        <form action="/Admin/EditProducts" method="get">
-            <input type="hidden" name="ID" value=1022 />
-            <button type="submit">Edit</button>
-        </form>
+        @foreach (var product in Model.Products)
+        {
+            <div class="card">
+                <p>@product.Name</p>
+                <p>@product.Price</p>
+                <p><img src="@product.Image" /></p>
+                <form action="/Admin/DeleteProducts" method="get">
+                    <input type="hidden" name="ID" value=@product.ID />
+                    <button type="submit">Delete</button>
+                </form>
 
-        <form action="/Admin/RecentOrders" method="get">
-            <button type="submit">Recent Orders</button>
-        </form>
+                <form action="/Admin/EditProducts" method="get">
+                    <input type="hidden" name="ID" value=@product.ID />
+                    <button type="submit">Edit</button>
+                </form>
+            </div>
+        }
+
     </div>
+
 </div>
