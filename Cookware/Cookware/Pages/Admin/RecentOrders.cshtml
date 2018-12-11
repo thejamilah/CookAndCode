@@ -8,14 +8,15 @@
     Layout = "_Layout_Admin";
 }
 
-<h2>RecentOrders</h2>
 
+<div class="card">
+    <h2>Recent Orders</h2>
+    @foreach (var item in Model.Orders)
 
-@foreach (var item in Model.Orders)
-
-{
-    <p>Customer Name: @item.FirstName @item.LastName</p>
-    <p>Order Date: @item.OrderDate</p>
-    <p>Order Total: $@item.Total USD</p>
-}
+    {
+        <p>Customer Name: @item.FirstName @item.LastName</p>
+        <p>Order Date: @item.OrderDate</p>
+        <p>Order Total: $@item.Total USD</p>
+    }
+    </div>
 
