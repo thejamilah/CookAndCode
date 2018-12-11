@@ -25,10 +25,6 @@
                 {
                     <a class="link" href="Product/">shop</a> <a class="link" href="CSharp/">For CSharp Lovers Only</a>
                 }
-                @if ((await AuthorizationService.AuthorizeAsync(User, "MustBe21ToPurchase")).Succeeded)
-                {
-                    <a class="link" href="Over21/">Over 21</a>
-                }
 
                 @if ((await AuthorizationService.AuthorizeAsync(User, "SchoolEmail")).Succeeded)
                 {
@@ -49,7 +45,9 @@
         </div>
     </div>
     <div class="spacer">
-        Cook && Code is a place where two interests intersect.  Cooking new and delicious things and programming.  Here you will find anything from a high tech digital thermometer to an article of clothing with quirky code scripts printed on them.  Enjoy browsing the items we have procured specificaly for people who share our two interests.  Happy Shopping!
+        <div class="site-intro">
+            Cook && Code is a place where two interests intersect. Cooking new and delicious things and programming.  Here you will find anything from a high tech digital thermometer to an article of clothing with quirky code scripts printed on them.  Enjoy browsing the items we have procured specificaly for people who share our two interests.  Happy Shopping!
+        </div>
     </div>
     <div class="middle">
 

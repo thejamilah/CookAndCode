@@ -1,0 +1,30 @@
+﻿@page
+@model Cookware.Pages.Member.UserProfileModel
+
+@using Microsoft.AspNetCore.Identity
+@using Cookware.Models
+@using Microsoft.AspNetCore.Authorization
+
+@inject IAuthorizationService AuthorizationService
+
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{
+    ViewData["Title"] = "UserProfile";
+}
+
+@{
+    Layout = "_Layout_Product_Detail";
+}
+<div class="deck">
+    <div class="card">
+        <h2>UserProfile</h2>
+        <ul>
+            <li>Name: @Model.user.FirstName @Model.user.LastName</li>
+            <li>Email: @Model.user.NormalizedEmail</li>
+            <li><a href="/Member/UserOrders">View Last 5 Orders</a></li>
+            <li><a href="/Member/UserManage">Manage Profile</a></li>
+        </ul>
+    </div>
+</div>
+

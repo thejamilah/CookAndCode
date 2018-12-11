@@ -10,20 +10,24 @@ using System;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using Cookware.Data;
+using System.Linq;
 
 namespace Cookware.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     public class AccountController : Controller
     {
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> _signInManager;
+        private ApplicationDbContext _context;
         private IEmailSender _email;
 
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailSender email)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, ApplicationDbContext context, IEmailSender email)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _context = context;
             _email = email;
         }
 
@@ -31,6 +35,7 @@ namespace Cookware.Controllers
         /// Registration page
         /// </summary>
         /// <returns>Display/direct to registration</returns>
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Register()
         {
@@ -42,11 +47,14 @@ namespace Cookware.Controllers
         /// </summary>
         /// <param name="registervm">Register View Model parameters</param>
         /// <returns>Complted profile</returns>
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel registervm)
         {
             if (ModelState.IsValid)
             {
+                CheckUserRolesExist();
+
                 // start the registration process
                 ApplicationUser user = new ApplicationUser()
                 {
@@ -59,7 +67,7 @@ namespace Cookware.Controllers
                 };
 
                 var result = await _userManager.CreateAsync(user, registervm.Password);
-                
+
                 if (result.Succeeded)
                 {
                     Claim fullNameClaim = new Claim("FullName", $"{user.FirstName} {user.LastName}");
@@ -80,6 +88,13 @@ namespace Cookware.Controllers
                         languageClaim
                     };
 
+                    if (registervm.Email.Contains("@codefellows.com"))
+                    {
+                        await _userManager.AddToRoleAsync(user, UserRoles.Admin);
+                    }
+
+                    await _userManager.AddToRoleAsync(user, UserRoles.Member);
+
                     await _userManager.AddClaimsAsync(user, myclaims);
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
@@ -87,6 +102,13 @@ namespace Cookware.Controllers
 
                     //SendGrid Email
                     await _email.SendEmailAsync(registervm.Email, "Registration Successful", $"<h1>Welcome, {registervm.FirstName}!</h1>  <p>Thank you for registering to Cook&&Code.  You will now receive exclusive deals on cool stuff!</p>");
+
+                    var roles = await _userManager.GetRolesAsync(user);
+
+                    if (roles.Contains("Administrator"))
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -101,11 +123,12 @@ namespace Cookware.Controllers
             }
             return View(registervm);
         }
-        
+
         /// <summary>
         /// Displays Login Page
         /// </summary>
         /// <returns>Login view</returns>
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Login()
         {
@@ -117,6 +140,7 @@ namespace Cookware.Controllers
         /// </summary>
         /// <param name="lvm">User login credentials</param>
         /// <returns>Confirmed login or invalid username/password</returns>
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel lvm)
         {
@@ -126,6 +150,13 @@ namespace Cookware.Controllers
 
                 if (result.Succeeded)
                 {
+                    var user = await _userManager.FindByEmailAsync(lvm.Email);
+
+                    if (await _userManager.IsInRoleAsync(user, UserRoles.Admin))
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
+
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -149,5 +180,26 @@ namespace Cookware.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        /// <summary>
+        /// Method checks if user has any roles associated with it
+        /// </summary>
+        [AllowAnonymous]
+        public void CheckUserRolesExist()
+        {
+            if (!_context.Roles.Any())
+            {
+                List<IdentityRole> Roles = new List<IdentityRole>
+                {
+                    new IdentityRole{Name = UserRoles.Admin, NormalizedName=UserRoles.Admin.ToString(), ConcurrencyStamp = Guid.NewGuid().ToString()},
+                    new IdentityRole{Name = UserRoles.Member, NormalizedName=UserRoles.Member.ToString(), ConcurrencyStamp = Guid.NewGuid().ToString()},
+                };
+
+                foreach (var role in Roles)
+                {
+                    _context.Roles.Add(role);
+                    _context.SaveChanges();
+                }
+            }
+        }
     }
 }

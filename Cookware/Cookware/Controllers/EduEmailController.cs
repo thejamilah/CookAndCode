@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Cookware.Controllers
 {
+    /// <summary>
+    /// Email domain policy
+    /// </summary>
     [Authorize(Policy = "SchoolEmail")]
     public class EduEmailController : Controller
     {

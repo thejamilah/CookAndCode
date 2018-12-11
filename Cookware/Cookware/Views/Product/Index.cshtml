@@ -37,4 +37,7 @@
         </div>
     }
 </div>
-@await Component.InvokeAsync("ShoppingCart")
+@if (SignInManager.IsSignedIn(User))
+{
+    @await Component.InvokeAsync("ShoppingCart")
+}

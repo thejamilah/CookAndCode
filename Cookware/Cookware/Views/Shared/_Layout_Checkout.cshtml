@@ -1,4 +1,12 @@
-﻿<html xmlns="http://www.w3.org/1999/xhtml">
+﻿@using Microsoft.AspNetCore.Identity
+@using Cookware.Models
+@using Microsoft.AspNetCore.Authorization
+
+@inject IAuthorizationService AuthorizationService
+
+@inject SignInManager<ApplicationUser> SignInManager
+
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>cook && code</title>
     <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
@@ -10,14 +18,25 @@
             <a class="navlink" href="@Url.Action("Index", "Home")"><h1>cook && code</h1></a>
         </header>
         <ul class="navbar">
-            <li class="navitem">
-                <form action="/Account/Logout" method="post">
-                    <button class="navlink navbutton">LOG OUT</button>
-                </form>
-            </li>
-            <li class="navitem">
-                <h4><a class="navlink" href="@Url.Action("Index", "BasketItem")">VIEW CART</a></h4>
-            </li>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <li class="navitem">
+                    <form action="/Account/Logout" method="post">
+                        <button class="navlink navbutton">LOG OUT</button>
+                    </form>
+                </li>
+                <li class="navitem">
+                    <h4><a class="navlink" href="@Url.Action("Index", "BasketItem")">VIEW CART</a></h4>
+                </li>
+            }
+            else
+            {
+                <li class="navitem">
+                    <form action="/Account/Login" method="get">
+                        <button class="navlink navbutton">LOG IN</button>
+                    </form>
+                </li>
+            }
             <li class="navitem">
                 <h4><a class="navlink" href="@Url.Action("Index", "Product")">SHOP</a></h4>
             </li>
@@ -25,7 +44,12 @@
                 <h4><a class="navlink" href="@Url.Action("Index", "Home")">HOME</a></h4>
             </li>
             <li class="navitem">
-                <h4><a class="navlink" href="@Url.Action("Receipt", "Checkout")">CHECKOUT</a></h4>
+                <h4>
+                    <a class="navlink" href="@Url.Action("Index","AboutUs")">ABOUT US</a>
+                </h4>
+            </li>
+            <li class="navitem">
+                <h4><a class="navlink" href="@Url.Action("Index", "Checkout")">CHECKOUT</a></h4>
             </li>
         </ul>
     </div>

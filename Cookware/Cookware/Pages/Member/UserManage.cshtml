@@ -1,0 +1,31 @@
+﻿@page
+@model Cookware.Pages.Member.UserManageModel
+@{
+    ViewData["Title"] = "UserManage";
+}
+
+@{
+    Layout = "_Layout";
+}
+
+
+    <div class="logreg_form">
+        <form method="post">
+            <label asp-for="UpdateUser.FirstName"></label>
+            <input asp-for="UpdateUser.FirstName" />
+
+            <label asp-for="UpdateUser.LastName"></label>
+            <input asp-for="UpdateUser.LastName" />
+
+            <label asp-for="UpdateUser.Email"></label>
+            <input asp-for="UpdateUser.Email" />
+
+            <label asp-for="UpdateUser.Password"></label>
+            <input asp-for="UpdateUser.Password" />
+
+            <label asp-for="UpdateUser.ConfirmPassword"></label>
+            <input asp-for="UpdateUser.ConfirmPassword" />
+
+            <input type="submit" value="Update Profile" />
+        </form>
+    </div>

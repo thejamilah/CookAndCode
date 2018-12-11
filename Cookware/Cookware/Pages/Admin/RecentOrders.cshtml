@@ -1,0 +1,22 @@
+﻿@page
+@model Cookware.Pages.Admin.RecentOrdersModel
+@{
+    ViewData["Title"] = "RecentOrders";
+}
+
+@{
+    Layout = "_Layout_Admin";
+}
+
+
+<div class="card">
+    <h2>Recent Orders</h2>
+    @foreach (var item in Model.Orders)
+
+    {
+        <p>Customer Name: @item.FirstName @item.LastName</p>
+        <p>Order Date: @item.OrderDate</p>
+        <p>Order Total: $@item.Total USD</p>
+    }
+    </div>
+

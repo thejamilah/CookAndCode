@@ -22,6 +22,8 @@ namespace Cookware.Models
         public string Description { get; set; }
         [Required]
         public string Image { get; set; }
+        [Required]
+        public bool LanguageIsCSharp { get; set; }
 
         //
         public ICollection<BasketItem> BasketItems { get; set; }

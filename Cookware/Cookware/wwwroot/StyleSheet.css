@@ -1,19 +1,22 @@
 ﻿* {
     font-family: 'Bree Serif', serif;
+    
 }
 
 body {
     width: 100%;
     height: 100%;
     margin: 0;
+
 }
+
 
 /*================ Log/Reg Page ================*/
 .wrapper {
     background-image: url(bg3.jpg);
     min-height: 100%;
 }
-
+ 
 .logreg_form{
     width: 30%;
     margin: 0 auto;
@@ -27,6 +30,10 @@ body {
 
 .logreg_form input{
     display: block;
+}
+
+ul {
+    list-style-type: none;
 }
 
 /*================ Home Page ================*/
@@ -49,6 +56,15 @@ body {
 .spacer {
     min-height: 300px;
     background-color: whitesmoke;
+}
+
+.site-intro {
+    text-align: center;
+    font-size: 1.40em;
+    margin-left: 25%;
+    margin-right: 25%;
+    padding-top: 5%;
+
 }
 
 .middle {
@@ -86,7 +102,6 @@ body {
     color: #67242d
 }
 
-
 /*================ Nav Bar ================*/
 .nav {
     position: fixed;
@@ -111,7 +126,7 @@ body {
 .navitem {
     text-decoration: none;
     display: inline-block;
-    width: 20%;
+    width: 15%;
     float: right;
 }
 
@@ -195,6 +210,7 @@ aside {
     border-radius: 5px;
 }
 
+
 /*================ Receipt Page ================*/
 
 .receipt {
@@ -207,4 +223,59 @@ aside {
 .receipt td{
     width: auto;
     height: 35px;
+}
+
+/*================ About Us Page ================*/
+
+.img-container {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    padding: 3em 0em;
+    margin-top: 3em;
+}
+
+.single-about {
+    margin: 5px auto;
+    width: 50%;
+}
+
+.about {
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
+    padding: 1em;
+}
+
+.about-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.favicon {
+    height: 30px;
+    width: 30px;
+}
+
+.about-team {
+    padding: .5em;
+    margin: -2em auto;
+    text-align: center;
+    font-size: 1.4em;
+    margin-right: 30%;
+    margin-left: 30%;
+}
+
+.editProduct {
+    width: 30%;
+    margin: 0 auto;
+    border-radius: 5px;
+    text-align: left;
+    padding: 1%;
+}
+
+.editProduct label, input{
+    display: block;
 }

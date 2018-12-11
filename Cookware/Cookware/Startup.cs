@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Cookware.Models.Handlers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using System;
 
 namespace Cookware
 {
@@ -49,14 +50,32 @@ namespace Cookware
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("MustBe21ToPurchase", policy => policy.Requirements.Add(new MinAgeRequirement(21)));
                 options.AddPolicy("FavoriteLanguage", policy => policy.RequireClaim("FavoriteLanguage"));
                 options.AddPolicy("SchoolEmail", policy => policy.Requirements.Add(new SchoolEmailHandler()));
+                options.AddPolicy("AdminAccess", policy => policy.RequireRole(UserRoles.Admin));
             });
 
             services.AddTransient<IProducts, ProductService>();
             services.AddTransient<IBasketItem, BasketItemService>();
             services.AddScoped<IEmailSender, EmailSender>();
+            services.AddTransient<IOrder, OrderService>();
+
+            //Setting the Account Login page
+            services.ConfigureApplicationCookie(options =>
+            {
+                // Cookie settings
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+                //options.LoginPath = "/Account/Login"; // If the LoginPath is not set here,
+                //                                      // ASP.NET Core will default to /Account/Login
+                //options.LogoutPath = "/Account/Logout"; // If the LogoutPath is not set here,
+                //                                        // ASP.NET Core will default to /Account/Logout
+                options.AccessDeniedPath = "/Account/AccessDenied"; // If the AccessDeniedPath is
+                                                                    // not set here, ASP.NET Core 
+                                                                    // will default to 
+                                                                    // /Account/AccessDenied
+                options.SlidingExpiration = true;
+            });
 
         }
 

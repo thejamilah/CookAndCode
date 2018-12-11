@@ -1,22 +1,36 @@
 ﻿@model Cookware.Models.Product
+@using Microsoft.AspNetCore.Identity;
+@using Cookware.Models;
+
 
 @{
     ViewData["Title"] = "Details";
-    Layout = "_Layout";
 }
 
+@{
+    Layout = "_Layout_Product_Detail";
+}
 
-<div class="productAll">
-    <p><img src="@Model.Image" /></p>
-    <p>@Model.Name</p>
-    <p>@Model.Price</p>
-    <p>@Model.Description</p>
+@inject SignInManager<ApplicationUser> SignInManager
+
+<div class="deck">
+    <div class="card">
+        <p><img src="@Model.Image" /></p>
+        <p>@Model.Name</p>
+        <p>$@Model.Price USD</p>
+        <p>@Model.Description</p>
+
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <form action="/BasketItem/AddToCart" method="post">
+                <label for="Quantity">Qty. :</label>
+                <input class="qtyinput" type="number" name="Quantity" />
+                <input type="hidden" name="ProductID" value="@Model.ID" />
+                <button class="button">Add To Cart</button>
+            </form>
+        }
+    </div>
 </div>
 
-<form action="/BasketItem/AddToCart" method="post">
-    <label for="Quantity">Qty. :</label>
-    <input type="number" name="Quantity" />
-    <input type="hidden" name="ProductID" value="@Model.ID" />
-    <button>Add To Cart</button>
-</form>
+
 

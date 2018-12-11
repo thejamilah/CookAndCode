@@ -1,0 +1,234 @@
+﻿* {
+    font-family: 'Bree Serif', serif;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+
+/*================ Log/Reg Page ================*/
+.wrapper {
+    background-image: url(bg3.jpg);
+    min-height: 100%;
+}
+
+.logreg_form {
+    width: 30%;
+    margin: 0 auto;
+    padding-top: 15%;
+    border-radius: 5px;
+}
+
+.regform {
+    padding-top: 10%;
+}
+
+.logreg_form input {
+    display: block;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/*================ Home Page ================*/
+.top, .spacer, .middle, .wrapper {
+    position: relative;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    opacity: .9;
+}
+
+.top {
+    background-image: url(bg1.jpg);
+    min-height: 100%;
+}
+
+.spacer {
+    min-height: 300px;
+    background-color: whitesmoke;
+}
+
+.site-intro {
+    text-align: center;
+    font-size: 1.40em;
+    margin-left: 25%;
+    margin-right: 25%;
+    padding-top: 5%;
+}
+
+.middle {
+    background-image: url(bg2.jpg);
+    min-height: 100%;
+}
+
+.header {
+    text-align: center;
+    color: whitesmoke;
+    font-size: 2em;
+}
+
+.title {
+    margin-bottom: 0;
+    padding-top: 20%;
+}
+
+.logreg {
+    text-align: center;
+}
+
+    .logreg p {
+        color: whitesmoke;
+    }
+
+.link {
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 10px;
+    color: #67242d;
+}
+
+    .link:hover, .navlink:hover {
+        color: #67242d
+    }
+
+/*================ Nav Bar ================*/
+.nav {
+    position: fixed;
+    top: 0;
+    height: 75px;
+    width: 100%;
+    background-color: #f9f6f2;
+}
+
+.navbar {
+    display: inline-block;
+    text-decoration: none;
+    width: 74%;
+    float: right;
+}
+
+.navhead {
+    display: inline-block;
+    margin-left: 2%;
+}
+
+.navitem {
+    text-decoration: none;
+    display: inline-block;
+    width: 15%;
+    float: right;
+}
+
+.navlink {
+    text-decoration: none;
+}
+
+a {
+    color: black;
+}
+
+.navbutton {
+    font-family: 'Bree Serif', serif;
+    font-size: 100%;
+    font-weight: bold;
+    line-height: 1.15;
+    margin: 1.5em 0;
+    padding: 0;
+    background-color: #f9f6f2;
+    border: none;
+}
+
+.navbutton:hover {
+    cursor: pointer;
+}
+
+
+/*================ Recent Orders ================*/
+.deck {
+    float: left;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 125px;
+}
+
+.card {
+    width: 30%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8em;
+    background-color: #c7c4c1;
+    border-radius: 5px;
+    text-align: center;
+    border: 1px solid silver;
+}
+
+    .card img {
+        height: auto;
+        width: 75%;
+        border-radius: 5px;
+    }
+
+    .card p:nth-child(2) {
+        width: 90%;
+        margin: 1% auto;
+    }
+
+p {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1em;
+    text-align: center;
+}
+
+.cart {
+    float: left;
+    width: 15%;
+    padding-top: 125px;
+}
+
+aside {
+    position: fixed;
+}
+
+.button {
+    background-color: #67242d;
+    padding: 2% 5%;
+    border-radius: 5px;
+    color: whitesmoke;
+    border: none;
+}
+
+.qtyinput {
+    width: 15%;
+    border: solid silver 1px;
+    border-radius: 5px;
+}
+
+
+/*================ Receipt Page ================*/
+
+.receipt {
+    padding-top: 15%;
+    width: auto;
+    height: 50%;
+    margin: 0 auto;
+}
+
+    .receipt td {
+        width: auto;
+        height: 35px;
+    }
+

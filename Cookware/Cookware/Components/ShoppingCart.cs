@@ -21,13 +21,17 @@ namespace Cookware.Components
             _userManager = userManager;
         }
 
+        /// <summary>
+        /// Grabs all basket items related to user for shopping cart
+        /// </summary>
+        /// <returns>shopping cart</returns>
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
             if (user != null)
             {
                 var ID = user.Id;
-                var shoppingCart = await _context.BasketItems.Where(x => x.UserID == ID).ToListAsync();
+                var shoppingCart = await _context.BasketItems.Where(x => x.UserID == ID && x.OrderID == 1).ToListAsync();
                 return View(shoppingCart);
             }
             else
