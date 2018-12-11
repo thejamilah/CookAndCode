@@ -32,7 +32,8 @@ namespace Cookware.Pages.Admin
         public async Task<IActionResult> OnGet()
         {
             //Get user id
-            var id = _userManager.GetUserId(User);
+            var user = await _userManager.FindByEmailAsync(User.Identity.Name);
+            var id = user.Id;
 
             //Get top 5 orders for user
             Orders = await _order.GetTopFiveOrders(id);

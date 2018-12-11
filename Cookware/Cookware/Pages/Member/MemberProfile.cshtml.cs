@@ -24,7 +24,7 @@ namespace Cookware.Pages.Member
 
         public ApplicationUser user { get; set; }
 
-        public async void OnGet()
+        public async Task OnGet()
         {
             user = await _userManager.GetUserAsync(User);
         }
