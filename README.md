@@ -33,9 +33,6 @@ Our BasketItem table is essentially an Entity Join table with a payload of quant
 ### https://ddanul.github.io/CookAndCode/
 
 ## Vulnerability Report
-
-
-### [link to report goes here]# Cookware
-
+[Cook && Code Vulnerability Report](../CookAndCode/vulnerability-report.md)
 ### https://github.com/Ddanul/CookAndCode/blob/master/vulnerability-report.md
 
