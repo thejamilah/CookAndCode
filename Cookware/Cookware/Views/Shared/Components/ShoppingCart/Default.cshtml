@@ -1,12 +1,18 @@
 ﻿@model List<Cookware.Models.BasketItem>
 
+@{ decimal total = 0; }
 
-<div class="cart">
-    <aside>
-        <a href="/BasketItem/Index">View Cart</a>
-        @foreach (var item in Model)
-        {
-            <p>@item.Product.Name : Qty. @item.Quantity</p>
-        }
-    </aside>
-</div>
+    <div class="cart">
+
+        <aside>
+            <a href="/BasketItem/Index">View Cart</a>
+
+            @foreach (var item in Model)
+            {
+                <p>@item.Product.Name : Qty. @item.Quantity</p>
+                <p> @{ total += (item.Quantity * item.Product.Price);}</p>
+            }
+            <p>Grand Total:</p>
+            <p>$@total USD</p>
+        </aside>
+    </div>
