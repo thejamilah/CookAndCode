@@ -10,23 +10,6 @@
 
 <div class="wrapper">
     <div class="deck">
-        <div class="logreg_form card">
-            <form action="Admin/UserProfile" method="get">
-                <button type="submit">View Profile</button>
-            </form>
-
-            <form action="Product/" method="get">
-                <button type="submit">View All Products</button>
-            </form>
-
-            <form action="Admin/CreateProducts" method="get">
-                <button type="submit">Add New Product</button>
-            </form>
-
-            <form action="/Admin/RecentOrders" method="get">
-                <button type="submit">Recent Orders</button>
-            </form>
-        </div>
 
         @foreach (var product in Model.Products)
         {
@@ -34,6 +17,7 @@
                 <p>@product.Name</p>
                 <p>@product.Price</p>
                 <p><img src="@product.Image" /></p>
+
                 <form action="/Admin/DeleteProducts" method="get">
                     <input type="hidden" name="ID" value=@product.ID />
                     <button type="submit">Delete</button>

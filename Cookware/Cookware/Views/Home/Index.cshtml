@@ -23,7 +23,7 @@
                 <p>Welcome, @User.Claims.First(x => x.Type == "FullName").Value</p>
                 @if ((await AuthorizationService.AuthorizeAsync(User, "FavoriteLanguage")).Succeeded)
                 {
-                    <a class="link" href="Product/">shop</a> <a class="link" href="CSharp/">For CSharp Lovers Only</a>
+                    <a class="link" href="Product/">shop</a> <a class="link" href="CSharp/">For C# Lovers Only</a>
                 }
 
                 @if ((await AuthorizationService.AuthorizeAsync(User, "SchoolEmail")).Succeeded)

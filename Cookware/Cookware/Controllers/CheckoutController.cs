@@ -37,6 +37,7 @@ namespace Cookware.Controllers
         /// shows index page for checkout
         /// </summary>
         /// <returns>view</returns>
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Index()
         {
@@ -48,6 +49,7 @@ namespace Cookware.Controllers
         /// </summary>
         /// <param name="CreditCard">Test credit card number</param>
         /// <returns>Receipt Page</returns>
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Checkout(string CreditCard, string FirstName, string LastName)
         {
@@ -92,11 +94,12 @@ namespace Cookware.Controllers
 
             return RedirectToAction("Receipt", "Checkout");
         }
-        
+
         /// <summary>
         /// Sends email upon checkout for completion of order and redirects to receipt page
         /// </summary>
         /// <returns> shopping cart receipt page</returns>
+        [AllowAnonymous]
         public async Task<IActionResult> Receipt()
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);

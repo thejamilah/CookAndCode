@@ -28,6 +28,12 @@
                 <li class="navitem">
                     <h4><a class="navlink" href="@Url.Action("Index", "Admin")">ADMIN HOME</a></h4>
                 </li>
+                <li class="navitem">
+                    <h4><a class="navlink" href="@Url.Action("CreateProducts", "Admin")">ADD PRODUCT</a></h4>
+                </li>
+                <li class="navitem">
+                    <h4><a class="navlink" href="@Url.Action("RecentOrders", "Admin")">RECENT ORDERS</a></h4>
+                </li>
             }
             else
             {
@@ -37,9 +43,6 @@
                     </form>
                 </li>
             }
-            <li class="navitem">
-                <h4><a class="navlink" href="@Url.Action("Index", "Home")">VIEW LIVE SITE</a></h4>
-            </li>
         </ul>
     </div>
 </body>

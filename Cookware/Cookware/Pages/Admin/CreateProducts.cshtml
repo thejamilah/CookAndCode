@@ -13,40 +13,43 @@
 <h2>CreateProduct</h2>
 
 <div class="deck">
-    <form method="post">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="Product.Sku" class="control-label"></label>
-            <input asp-for="Product.Sku" class="form-control" />
-            <span asp-validation-for="Product.Sku" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Product.Name" class="control-label"></label>
-            <input asp-for="Product.Name" class="form-control" />
-            <span asp-validation-for="Product.Name" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Product.Price" class="control-label"></label>
-            <input asp-for="Product.Price" class="form-control" />
-            <span asp-validation-for="Product.Price" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Product.Description" class="control-label"></label>
-            <input asp-for="Product.Description" class="form-control" />
-            <span asp-validation-for="Product.Description" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Product.Image" class="control-label"></label>
-            <input asp-for="Product.Image" class="form-control" />
-            <span asp-validation-for="Product.Image" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="Product.LanguageIsCSharp" class="control-label"></label>
-            <input asp-for="Product.LanguageIsCSharp" class="form-control" />
-            <span asp-validation-for="Product.LanguageIsCSharp" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </form>
+    <div class="card">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Product.Sku" class="control-label"></label>
+                <input asp-for="Product.Sku" class="form-control" />
+                <span asp-validation-for="Product.Sku" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Name" class="control-label"></label>
+                <input asp-for="Product.Name" class="form-control" />
+                <span asp-validation-for="Product.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Price" class="control-label"></label>
+                <input asp-for="Product.Price" class="form-control" />
+                <span asp-validation-for="Product.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Description" class="control-label"></label>
+                <input asp-for="Product.Description" class="form-control" />
+                <span asp-validation-for="Product.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.Image" class="control-label"></label>
+                <input asp-for="Product.Image" class="form-control" />
+                <span asp-validation-for="Product.Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Product.LanguageIsCSharp" class="control-label"></label>
+                <input asp-for="Product.LanguageIsCSharp" class="form-control" />
+                <span asp-validation-for="Product.LanguageIsCSharp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+            <a href="./Index">Back to List</a>
+        </form>
+    </div>
 </div>

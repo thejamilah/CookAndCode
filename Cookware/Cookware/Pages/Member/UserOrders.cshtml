@@ -20,12 +20,12 @@
             <p>Order Total: $@item.Total USD</p>
             <p>Payment: Card Ending in '@item.CreditCard'</p>
             <p>Items:</p>
-            <ul>
+            
                 @foreach (var basketitem in item.BasketItems)
                 {
-                    <li>@basketitem.Product.Name : Qty. @basketitem.Quantity</li>
+                    <p>@basketitem.Product.Name : Qty. @basketitem.Quantity</p>
                 }
-            </ul>
+            
         </div>
     }
 </div>

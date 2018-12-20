@@ -21,7 +21,7 @@ namespace Cookware.Data
                 {
                     ID = 1,
                     Sku = "305361728",
-                    Name = "Pancakebot Pancake Printer Griddle",
+                    Name = "Pancakebot Printer Griddle",
                     Price = 19.99M,
                     Description = "The Pancake Bot is the world’s first food printer capable of printing pancakes by automatically dispensing batter directly onto a griddle. Pancake designs can be loaded onto the Pancake Bot via SD card. Users can make their own pancake designs with the included software or browse through our online community that is updated with fun, new designs every week.",
                     Image = "https://images.homedepot-static.com/productImages/dc4da6a2-3be5-42f2-ab7a-23053eaca536/svn/black-dash-indoor-grills-pnkb01bk2-64_1000.jpg",
@@ -71,7 +71,7 @@ namespace Cookware.Data
                 {
                     ID = 6,
                     Sku = "12836924879",
-                    Name = "Range Dial Grill Pro smart cooking thermometer",
+                    Name = "Range Dial Smart Thermometer",
                     Price = 19.95M,
                     Description = "Range Dial is a versatile wireless cooking thermometer that can be used with or without your iPhone. Turn the machined stainless steel knob to set an alert, or use the iOS app for more control. ",
                     Image = "https://cdn.shopify.com/s/files/1/0103/5182/products/DSC_5124_grande_df13d5e4-bc6a-45e5-82d2-594c862dead6_1024x1024.jpg?v=1511328894",
@@ -81,7 +81,7 @@ namespace Cookware.Data
                 {
                     ID = 7,
                     Sku = "12836924879",
-                    Name = "Quirky Refuel Smart Propane Tank Gauge",
+                    Name = "Quirky Smart Propane Tank",
                     Price = 5.00M,
                     Description = "Monitor your propane supply from anywhere, and receive alerts when it's running low. Position your grill in range of your Wi - Fi network and connect to the Wink App on your mobile device to receive alerts. Tapping the sensor displays an LED reading of the gas level when your smartphone isn't handy, Works with all grills with non - hanging propane tanks",
                     Image = "https://images-na.ssl-images-amazon.com/images/I/61iQ1zrE6eL._SL1001_.jpg",
@@ -91,7 +91,7 @@ namespace Cookware.Data
                 {
                     ID = 8,
                     Sku = "12836924879",
-                    Name = "Nespresso Expert Espresso Machine",
+                    Name = "Nespresso Espresso Machine",
                     Price = 49.99M,
                     Description = "Wake up to premium coffee right in your own home. No need to go to a coffee shop to get your morning fix. That is if you have this Nespresso Expert Espresso Machine. This coffee machine by De'Longhi lets you brew premium coffee in 4 convenient sizes: Americano, Espresso, Lungo, and Ristretto. As for the temperature settings, it has 3 distinct temperatures that you can choose from including medium, hot, and extra hot.All it takes is less than 30 seconds for your cup to be ready.It comes with a capsule testing pack, but after that, you had better get more Nepresso capsules because this is addicting!",
                     Image = "https://d3f8t323tq9ys5.cloudfront.net/uploads/2017/08/71g-omzSENL._SL1500_.jpg",
@@ -101,7 +101,7 @@ namespace Cookware.Data
                 {
                     ID = 9,
                     Sku = "86-9345021",
-                    Name = "KitchenAid Pro Line 7-Quart Stand Mixer - Copper",
+                    Name = "KitchenAid Pro Mixer",
                     Price = 89.99M,
                     Description = "Our most powerful Stand Mixer motor are 1.3 HP. The high efficiency, quiet motor delivers .44 HP to the bowl and is designed to run longer and deliver optimum torque with less heat build-up. Our longest lasting quietest stand mixer design with all metal gears. This robust mixer was designed to last longer and deliver ultimate performance with less noise.",
                     Image = "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQRcVeKzC6rEjj5LJI0-O7gew2r-vRNqOuzG3WPkLFq8W_z073CyQ5pL5unWlEUz5qjO1jWeK0DDZm0wmMzyfkikVAybgNk&usqp=CAY",
@@ -111,7 +111,7 @@ namespace Cookware.Data
                 {
                     ID = 10,
                     Sku = "927348829849",
-                    Name = "Vacuvita® Home Base One-Touch Vacuum Storage System",
+                    Name = "Vacuvita Vacuum Storage",
                     Price = 19.99M,
                     Description = "The Vacuvita Home Base is a great way to store food on your kitchen countertop. Instead of taking up space in your cupboard or kitchen, this system vacuum seals its contents every single time it is closed. This means that you can reduce waste (because food will last much longer) and the associated app will also help you keep track of your stored foods so you know when it’s time to eat them. Never eat an unripe avocado again. It’s also perfect for travel, or for a chef on the go.",
                     Image = "https://d3f8t323tq9ys5.cloudfront.net/uploads/2016/06/product-58d758d281e47-Front-700x700.jpg",

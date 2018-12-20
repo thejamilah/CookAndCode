@@ -5,24 +5,24 @@
 }
 
 @{
-    Layout = "_Layout";
+    Layout = "_Layout_Admin";
 }
 
 
     <h2>Are you sure you want to remove this item?</h2>
 
 <div class="deck">
-    <ul>
-        <li>@Model.Product.Name</li>
-        <li>@Model.Product.Price</li>
-        <li>@Model.Product.Sku</li>
-        <li>@Model.Product.Description</li>
-        <li><img src="@Model.Product.Image" alt="Product img" /></li>
-    </ul>
+    <div class="card">
+            <p>@Model.Product.Name</p>
+            <p>$@Model.Product.Price USD</p>
+            <p>SKU: @Model.Product.Sku</p>
+            <p>@Model.Product.Description</p>
+            <p><img src="@Model.Product.Image" alt="Product img" /></p>
 
-    <form method="post">
-        <input type="hidden" asp-for="@Model.Product.ID" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a href="./Index">Back to List</a>
-    </form>
+        <form method="post">
+            <input type="hidden" asp-for="@Model.Product.ID" />
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <a href="./Index">Back to List</a>
+        </form>
+    </div>
 </div>

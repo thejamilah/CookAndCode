@@ -5,12 +5,12 @@
 }
 
 @{
-    Layout = "_Layout";
+    Layout = "_Layout_Admin";
 }
 
 <h2>Edit Product</h2>
 
-<div class="deck">
+<div class="card">
     <form method="post" class="card editProduct">
         <input type="hidden" asp-for="Product.ID" />
 
@@ -33,5 +33,6 @@
         <input asp-for="Product.LanguageIsCSharp" />
 
         <input type="submit" value="Update Product" />
+        <a href="./Index">Back to List</a>
     </form>
 </div>

@@ -34,6 +34,7 @@ namespace Cookware.Controllers
         /// <param name="ProductID">Id for product being added</param>
         /// <param name="Quantity">quantity of item selected by user</param>
         /// <returns>Index view of product controller</returns>
+        [AllowAnonymous]
         [HttpPost, ActionName("AddToCart")]
         public async Task<IActionResult> CreateBasketItem(int ProductID, int Quantity)
         {
@@ -79,6 +80,7 @@ namespace Cookware.Controllers
         /// </summary>
         /// <param name="ProductID">Product ID from button</param>
         /// <returns>index page for shopping cart</returns>
+        [AllowAnonymous]
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteBasketItem(int ProductID)
         {
@@ -95,6 +97,7 @@ namespace Cookware.Controllers
         /// </summary>
         /// <param name="id">Product ID</param>
         /// <returns>true if exists or false if not</returns>
+        [AllowAnonymous]
         private bool ProductExists(int id)
         {
             return _products.GetProduct(id) != null;
@@ -104,6 +107,7 @@ namespace Cookware.Controllers
         /// Index page displays basket items associated with user
         /// </summary>
         /// <returns>shopping cart</returns>
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var user = await _userManager.GetUserAsync(HttpContext.User);
@@ -120,6 +124,7 @@ namespace Cookware.Controllers
         /// <param name="ProductID">Product ID</param>
         /// <param name="Quantity">Updated Quantity</param>
         /// <returns>shopping cart page</returns>
+        [AllowAnonymous]
         [HttpPost, ActionName("Update")]
         public async Task<IActionResult> UpdateBasketItem(int ID, int ProductID, int Quantity)
         {
